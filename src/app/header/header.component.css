@@ -1,0 +1,163 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Header Container */
+.header {
+  width: 100%;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px;
+  position: relative;
+  font-family: 'Kumbh Sans', sans-serif;
+  background-color: #fff;
+}
+
+/* Hamburguer */
+.hamburger {
+  display: none;
+  font-size: 36px;
+  cursor: pointer;
+  color: #000;
+  z-index: 3;
+}
+
+/* Menu */
+.menu {
+  display: flex;
+  gap: 40px;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.menu-item a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.menu-item a:hover {
+  font-weight: 800;
+}
+
+/* Logo */
+.logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 128px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.logo img {
+  max-height: 100%;
+  max-width: 200px;
+  object-fit: contain;
+}
+
+/* Ícones Direita */
+.menu-icon {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  z-index: 2;
+}
+
+.menu-icon .material-icons {
+  font-size: 32px;
+  color: #000;
+  cursor: pointer;
+}
+
+/* Hover icons */
+.menu-icon:hover .material-icons:hover {
+  font-size: 35px;
+}
+
+/* -------------------- Responsivo -------------------- */
+@media (max-width: 1024px) {
+  .header {
+    padding: 0 30px;
+  }
+  .menu {
+    gap: 20px;
+  }
+  .logo img {
+    max-width: 150px;
+  }
+  .menu-icon .material-icons {
+    font-size: 28px;
+  }
+}
+
+/* Mobile (telas pequenas) */
+@media (max-width: 768px) {
+  .header {
+    height: 120px;
+    padding: 0 15px;
+  }
+
+  /* Mostra o hambúrguer (esquerda) */
+  .hamburger {
+    display: block;
+  }
+
+  /* Menu recolhido (escondido por padrão) */
+  .menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    display: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+
+  /* Menu ativo (quando clica no hambúrguer) */
+  .menu.active {
+    display: flex;
+    animation: slideDown 0.3s ease;
+  }
+
+  .menu-item {
+    padding: 15px 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .menu-item a {
+    font-size: 16px;
+  }
+
+  /* Logo menor */
+  .logo img {
+    max-width: 120px;
+  }
+
+  /* Ícones direita */
+  .menu-icon .material-icons {
+    font-size: 26px;
+  }
+}
+
+/* Animação */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
