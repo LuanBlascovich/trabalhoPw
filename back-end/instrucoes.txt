@@ -1,0 +1,13 @@
+----> INSTRUÇÕES DO PROJETO (para o back-end) <----
+
+1 - Dependências necessárias:
+-> dotenv, mysql2, nodemon, express, cors, jsonwebtoken e multer.
+
+Use o comando (sem as aspas) para instalar as dependencias do projeto:
+-> " npm i dotenv mysql2 nodemon express cors jsonwebtoken multer "
+
+2 - Configuração do ambiente:
+-> Edite o arquivo .env para ajustar as informações de conexão com o banco de dados (como senha, nome do banco, usuário, etc).
+
+3 - Commit:
+-> Ao fazer o commit, lembre-se de fazê-lo a partir da pasta principal (trabalhoPw) para não enviar apenas o back-end por engano.

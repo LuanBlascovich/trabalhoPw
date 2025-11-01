@@ -1,8 +1,8 @@
-import express from 'express'
-import { teste } from './repository/testeRepository.js'
+import express from 'express';
+import usuarioController from './controller/usuarioController.js';
 
 export function adicionarRotas(api) {
-  api.use(teste)
+  api.use(usuarioController);
   api.use('/public/storage', express.static('public/storage'));
 }
 

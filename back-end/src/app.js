@@ -11,4 +11,4 @@ api.use(express.json());
 adicionarRotas(api);
 
 const PORT = process.env.PORT;
-api.listen(PORT, ()=> console.log ("-->API subiu<--"));
+api.listen(PORT, ()=> console.log ("--> API subiu <--"));
