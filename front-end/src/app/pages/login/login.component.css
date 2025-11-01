@@ -1,0 +1,135 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Container principal */
+.container {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 2rem 3rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 50px auto;
+}
+  /* Título */
+  h2 {
+    text-align: left;
+    font-size: 1.5rem;
+    margin-bottom: 0.3rem;
+  }
+
+  /* Texto de cadastro */
+  .register-text {
+    font-size: 0.9rem;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+
+  .register-text a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .register-text a:hover {
+    text-decoration: underline;
+  }
+
+  /* Labels e inputs */
+  form label {
+    display: block;
+    font-size: 0.9rem;
+    color: #333;
+    margin-bottom: 4px;
+  }
+
+  form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+  }
+
+  /* Opções (lembrar / senha) */
+  .options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+
+  .options a {
+    color: #007bff;
+    text-decoration: none;
+  }
+
+  .options a:hover {
+    text-decoration: underline;
+  }
+
+  /* Botão principal */
+  .btn-primary {
+    width: 100%;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 8px;
+  }
+
+  .btn-primary:hover {
+    background-color: #0069d9;
+  }
+
+  /* Divisor */
+  .divider {
+    text-align: center;
+    color: #888;
+    margin: 15px 0;
+  }
+
+  /* Botões sociais */
+  .btn-facebook,
+  .btn-google {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    transition: 0.3s;
+  }
+
+  .btn-facebook {
+    background-color: #3b5998;
+    color: white;
+  }
+
+  .btn-google {
+    background-color: #db4437;
+    color: white;
+  }
+
+  .btn-facebook:hover {
+    background-color: #324b82;
+  }
+
+  .btn-google:hover {
+    background-color: #c33c2f;
+  }
+

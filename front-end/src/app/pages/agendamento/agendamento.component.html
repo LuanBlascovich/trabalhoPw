@@ -1,0 +1,58 @@
+<!-- AVISO: O header e o Footer já estão importado em todas as paginas. 
+     Não é necessário criar outro header ou footer nesta página. -->
+
+
+<div class="agendamento-container">
+  <h1 class="page-title">AGENDAMENTO</h1>
+
+  <div class="card">
+    <h2 class="card-title">Seu agendamento</h2>
+
+    <form class="form" (ngSubmit)="onSubmit()">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Nome</label>
+          <input
+            type="text"
+            class="form-input"
+            [(ngModel)]="agendamento.nome"
+            name="nome"
+            placeholder="Nikhil"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Nível</label>
+          <input
+            type="text"
+            class="form-input"
+            [(ngModel)]="agendamento.nivel"
+            name="nivel"
+            placeholder="Iniciante"
+          />
+        </div>
+      </div>
+
+      <div class="form-group full-width">
+        <label class="form-label">Date & Hora</label>
+        <div class="datetime-input-wrapper">
+          <input
+            type="datetime-local"
+            class="form-input datetime-input"
+            [(ngModel)]="agendamento.dataHora"
+            name="dataHora"
+          />
+          <span class="calendar-icon"></span>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-agendar">Agendar</button>
+    </form>
+  </div>
+</div>
+
+
+
+
+
+     

@@ -1,1 +1,79 @@
-<p>home works!</p>
+<!-- AVISO: O header e o Footer já estão importado em todas as paginas. 
+     Não é necessário criar outro header ou footer nesta página. -->
+
+<main>
+  <!-- Background -->
+  <section class="background"></section>
+
+  <!-- Aulas -->
+  <section class="aulas">
+    <h2>AULAS</h2>
+    <div class="cards-aulas">
+      <a routerLink="/aulas" class="card-aula iniciante">
+        <img src="assets/images/aula-iniciante.jpg" alt="Aula para iniciantes">
+        <h3>INICIANTE</h3>
+      </a>
+
+      <a routerLink="/aulas" class="card-aula intermediario">
+        <img src="assets/images/aula-intermediario.jpg" alt="Aula intermediária">
+        <h3>INTERMEDIÁRIO</h3>
+      </a>
+
+      <a routerLink="/aulas" class="card-aula avancado">
+        <img src="assets/images/aula-avancado.jpg" alt="Aula avançada">
+        <h3>AVANÇADO</h3>
+      </a>
+    </div>
+
+    <div class="botao-aulas">
+      <a routerLink="/agendamentos" class="btn-agendamentos">AGENDAMENTOS</a>
+    </div>
+  </section>
+
+  <!-- Produtos em Destaque -->
+   <section class="destaques">
+    <h2>Produtos em Destaque</h2>
+    <div class="produto-container">
+      <div class="produto" *ngFor="let produto of produtos">
+        <img [src]="produto.img" [alt]="produto.nome">
+        <h3>{{ produto.nome }}</h3>
+        <p>{{ produto.descricao }}</p>
+      </div>
+    </div>
+    <div class="ver-mais">
+      <a routerLink="/produtos" class="btn-ver-mais">Ver Mais</a>
+    </div>
+  </section>
+
+  <!-- Sobre Nós -->
+  <section class="sobre">
+    <div class="ilustracao">
+      <img src="assets/images/sobre-foto.png" alt="Mão Shaka" />
+    </div>
+
+    <div class="texto">
+      <h4 class="subtitulo">DOMINE A ARTE DE PEGAR ONDAS</h4>
+      <div class="linha-onda"></div>
+
+      <h2>SOBRE</h2>
+      <p>
+        Seja bem-vindo aos treinos do professor Fabrício de Sousa! Aqui você
+        vai aprender as melhores técnicas para surfar com segurança, equilíbrio
+        e estilo. Aproveite cada dica e descubra como transformar sua paixão
+        pelo mar em uma experiência única.
+      </p>
+
+      <div class="professor">
+        <div class="foto">
+          <img src="assets/images/professor.png" alt="Professor Fabrício de Sousa" />
+        </div>
+        <div class="info">
+          <span class="titulo">PROFESSOR</span>
+          <h3>Fabrício de Sousa</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+
