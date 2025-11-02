@@ -5,5 +5,3 @@ export function adicionarRotas(api) {
   api.use(usuarioController);
   api.use('/public/storage', express.static('public/storage'));
 }
-
-

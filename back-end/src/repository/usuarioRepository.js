@@ -7,8 +7,8 @@ export async function verificarUsuarioCadastrado(usuario) {
 }
 
 export async function cadastrar(usuario) {
-    const comando = `INSERT INTO usuario(nome, sobrenome, email, senha, funcao) VALUES (?, ?, MD5(?), ?)`;
-    const [info] = await connection.query(comando, [usuario.nome, usuario.email, usuario.senha, usuario.funcao]);
+    const comando = `INSERT INTO usuario(nome, sobrenome, email, senha, tipo) VALUES (?, ?, ?, MD5(?), "cliente")`;
+    const [info] = await connection.query(comando, [usuario.nome, usuario.sobrenome, usuario.email, usuario.senha]);
     return info.insertId ? true : false;
 }
 

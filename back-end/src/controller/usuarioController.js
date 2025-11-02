@@ -8,7 +8,7 @@ endpoints.post('/usuario/cadastrar', async (req, resp) => {
     try {
         const usuario = req.body;
 
-        if (!usuario.nome || !usuario.email || !usuario.senha || !usuario.funcao) {
+        if (!usuario.nome || !usuario.email || !usuario.sobrenome || !usuario.senha) {
             return resp.status(400).send({ erro: "Preencha todos os campos obrigatórios" });
         }
 

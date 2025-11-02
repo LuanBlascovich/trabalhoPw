@@ -10,7 +10,7 @@ CREATE TABLE usuario (
     sobrenome VARCHAR(200) NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
     senha VARCHAR(255) NOT NULL,
-    tipo ENUM('administrador','instrutor','cliente') NOT NULL /* instrutor serve para*/,
+    tipo ENUM('administrador','instrutor','cliente') NOT NULL /* instrutor serve para: não sei*/,
     data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
