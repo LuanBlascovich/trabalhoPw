@@ -1,19 +1,35 @@
-<!-- AVISO: O header e o Footer já estão importado em todas as paginas. 
+<!-- AVISO: O header e o footer já estão importados em todas as páginas. 
      Não é necessário criar outro header ou footer nesta página. -->
+
 <div class="container">
   <div class="form-box">
     <h2>Login</h2>
-    <p class="register-text">
+
+    <p class="login-text">
       Não tem uma conta?
       <a routerLink="/cadastro">Cadastre-se</a>
     </p>
 
     <form (ngSubmit)="login()">
       <label for="email">E-mail</label>
-      <input type="email" id="email" placeholder="Digite o e-mail" required [(ngModel)]="email" name="email">
+      <input
+        type="email"
+        id="email"
+        placeholder="Digite o e-mail"
+        required
+        [(ngModel)]="email"
+        name="email"
+      >
 
       <label for="senha">Senha</label>
-      <input type="password" id="senha" placeholder="Digite a senha" required [(ngModel)]="senha" name="senha">
+      <input
+        type="password"
+        id="senha"
+        placeholder="Digite a senha"
+        required
+        [(ngModel)]="senha"
+        name="senha"
+      >
 
       <div class="options">
         <label><input type="checkbox" /> Lembrar-me</label>
@@ -22,7 +38,7 @@
 
       <button type="submit" class="btn-primary">Login</button>
 
-      <div class="divider">OU</div>
+      <div class="divider">ou</div>
 
       <button type="button" class="btn-facebook">Continuar com o Facebook</button>
       <button type="button" class="btn-google">Continuar com o Google</button>
