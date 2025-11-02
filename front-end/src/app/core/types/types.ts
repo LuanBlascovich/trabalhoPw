@@ -7,3 +7,11 @@ export interface Usuario {
   tipo?: 'administrador' | 'instrutor' | 'cliente';
   data_criacao?: string;
 }
+
+export interface Produto {
+  id_produto?: number;
+  nome: string;
+  descricao: string;
+  preco: number;
+  imagem?: string;
+}

@@ -3,7 +3,7 @@ import multer from 'multer';
 import { getAuthentication } from '../utils/jwt.js';
 import * as repo from '../repository/produtoRepository.js';
 
-const input = multer({ dest: "../public/storage" });
+const input = multer({ dest: "./public/storage" });
 const endpoints = Router();
 const autenticar = getAuthentication();
 
@@ -27,6 +27,11 @@ endpoints.post('/produto/adicionar', autenticar, input.single("imagem"), async (
         console.error("Erro ao adicionar produto:", error);
         return resp.status(500).send({ erro: "Erro interno do servidor" });
     }
+});
+
+endpoints.get('/produto/listar', async (req, resp) => {
+    const produtos = await repo.listarProdutos();
+    resp.send(produtos);
 });
 
 export default endpoints;

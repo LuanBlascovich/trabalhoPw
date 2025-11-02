@@ -58,3 +58,5 @@ CREATE TABLE agendamento (
     FOREIGN KEY (aula_id) REFERENCES aula(id_aula) ON DELETE CASCADE,
     FOREIGN KEY (cliente_id) REFERENCES usuario(id_usuario) ON DELETE CASCADE
 );
+
+insert into usuario(nome, sobrenome, email, senha, tipo) values ("admin", "admin", "admin@gmail.com", MD5("1234"),"administrador");
