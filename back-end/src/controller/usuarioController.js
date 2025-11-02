@@ -1,7 +1,6 @@
 import { Router } from 'express';
 import { generateToken } from '../utils/jwt.js';
-import * as repoUsuario from '../repository/usuarioRepository.js';
-import * as repoLogin from '../repository/loginRepository.js';
+import * as repo from '../repository/usuarioRepository.js';
 
 const endpoints = Router();
 
@@ -13,12 +12,12 @@ endpoints.post('/usuario/cadastrar', async (req, resp) => {
             return resp.status(400).send({ erro: "Preencha todos os campos obrigatórios" });
         }
 
-        const verificacao = await repoUsuario.verificarUsuarioCadastrado(usuario);
+        const verificacao = await repo.verificarUsuarioCadastrado(usuario);
         if (verificacao) {
             return resp.status(400).send({ erro: "Usuário já cadastrado" });
         }
 
-        const cadastro = await repoUsuario.cadastrar(usuario);
+        const cadastro = await repo.cadastrar(usuario);
         if (!cadastro) {
             return resp.status(500).send({ erro: "Erro ao tentar cadastrar o usuário" });
         }
@@ -39,7 +38,7 @@ endpoints.post("/usuario/login", async (req, resp) => {
             return resp.status(400).send({ erro: "Preencha e-mail e senha" });
         }
 
-        const credenciais = await repoLogin.fazerLogin(login);
+        const credenciais = await repo.fazerLogin(login);
         if (!credenciais) {
             return resp.status(401).send({ erro: "E-mail ou senha inválidos" });
         }

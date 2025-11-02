@@ -3,20 +3,14 @@
 CREATE DATABASE swell;
 USE swell;
 
-CREATE TABLE administrador (
-    id_admin INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(200) NOT NULL,
-    email VARCHAR(100) UNIQUE NOT NULL,
-    senha VARCHAR(255) NOT NULL,
-    data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP
-);
 
 CREATE TABLE usuario (
     id_usuario INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(200) NOT NULL,
+    sobrenome VARCHAR(200) NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
     senha VARCHAR(255) NOT NULL,
-    funcao ENUM('instrutor','cliente') NOT NULL,
+    tipo ENUM('administrador','instrutor','cliente') NOT NULL /* instrutor serve para*/,
     data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 

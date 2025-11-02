@@ -1,6 +1,5 @@
 -- Consulta nas tabelas
 
-SELECT * FROM administrador;
 SELECT * FROM usuario;
 SELECT * FROM produto;
 SELECT * FROM aula;
