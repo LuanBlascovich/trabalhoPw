@@ -1,39 +1,47 @@
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { UsuariosService } from '../../core/services/usuarios.service';
+import { Usuario } from '../../core/types/types';
 
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [RouterModule, FormsModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css',
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
   email: string = '';
   senha: string = '';
   lembrar: boolean = false;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private usuariosService: UsuariosService
+  ) {}
 
   login() {
-    const usuarioCadastrado = localStorage.getItem('usuarioCadastro');
-    if (!usuarioCadastrado) {
-      alert('Nenhum usuário cadastrado!');
-      return;
-    }
+    const usuario: Partial<Usuario> = {
+      email: this.email,
+      senha: this.senha,
+    };
 
-    const usuario = JSON.parse(usuarioCadastrado);
-
-    if (this.email === usuario.email && this.senha === usuario.senha) {
-      localStorage.setItem('usuario', JSON.stringify(usuario));
-
-      // dispara evento para atualizar header
-      window.dispatchEvent(new Event('usuarioAtualizado'));
-
-      this.router.navigate(['/home']);
-    } else {
-      alert('E-mail ou senha inválidos!');
-    }
+    this.usuariosService.fazerLogin(usuario as Usuario).subscribe({
+      next: (res) => {
+        if (res.usuario) {
+          localStorage.setItem('usuario', JSON.stringify(res.usuario));
+          window.dispatchEvent(new Event('usuarioAtualizado'));
+          alert(`Bem-vindo, ${res.usuario.nome}!`);
+          this.router.navigate(['/home']);
+        } else {
+          alert('E-mail ou senha inválidos!');
+        }
+      },
+      error: (err) => {
+        console.error(err);
+        alert(err.error?.erro || 'Erro ao tentar logar');
+      },
+    });
   }
 }

@@ -12,7 +12,7 @@
                <div class="produto-info">
                     <h3 class="produto-nome">{{ p.nome }}</h3>
                     <p class="produto-descricao">{{ p.descricao }}</p>
-                    <p class="produto-preco">R$ {{ p.preco | number: '1.2-2' }}</p>
+                    <p class="produto-preco">{{ p.preco | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</p>
                     <button class="btn-adicionar">Adicionar ao carrinho</button>
                </div>
           </div>

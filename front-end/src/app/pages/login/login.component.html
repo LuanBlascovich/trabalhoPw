@@ -12,24 +12,10 @@
 
     <form (ngSubmit)="login()">
       <label for="email">E-mail</label>
-      <input
-        type="email"
-        id="email"
-        placeholder="Digite o e-mail"
-        required
-        [(ngModel)]="email"
-        name="email"
-      >
+      <input type="email" id="email" placeholder="Digite o e-mail" required [(ngModel)]="email" name="email">
 
       <label for="senha">Senha</label>
-      <input
-        type="password"
-        id="senha"
-        placeholder="Digite a senha"
-        required
-        [(ngModel)]="senha"
-        name="senha"
-      >
+      <input type="password" id="senha" placeholder="Digite a senha" required [(ngModel)]="senha" name="senha">
 
       <div class="options">
         <label><input type="checkbox" /> Lembrar-me</label>

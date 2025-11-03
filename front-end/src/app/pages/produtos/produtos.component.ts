@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { HeaderComponent } from '../../components/header/header.component';
-import { FooterComponent } from '../../components/footer/footer.component';
 import { ProdutoService } from '../../core/services/produto.service';
 import { Produto } from '../../core/types/types';
 import { CommonModule } from '@angular/common';
@@ -9,7 +7,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-produtos',
   standalone: true,
-  imports: [RouterModule, HeaderComponent, FooterComponent, CommonModule],
+  imports: [RouterModule, CommonModule],
   templateUrl: './produtos.component.html',
   styleUrl: './produtos.component.css',
 })

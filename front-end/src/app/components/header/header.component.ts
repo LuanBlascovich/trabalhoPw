@@ -7,9 +7,8 @@ import { Router, RouterModule } from '@angular/router';
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css',
+  styleUrls: ['./header.component.css'],
 })
-
 export class HeaderComponent implements OnInit {
   menuOpen = false;
   usuarioLogado = false;
@@ -19,23 +18,20 @@ export class HeaderComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit() {
-    const usuario = localStorage.getItem('usuario');
-    if (usuario) {
-      this.usuarioLogado = true;
-      this.nomeUsuario = JSON.parse(usuario).nome;
-    }
-
-    // Detecta a rota atual
+    this.atualizarUsuario();
     this.router.events.subscribe(() => {
       this.isHome = this.router.url === '/home';
     });
+
+    window.addEventListener('usuarioAtualizado', () => this.atualizarUsuario());
   }
-  
+
   atualizarUsuario() {
-    const usuario = localStorage.getItem('usuario');
-    if (usuario) {
+    const usuarioStr = localStorage.getItem('usuario');
+    if (usuarioStr) {
+      const usuario = JSON.parse(usuarioStr);
       this.usuarioLogado = true;
-      this.nomeUsuario = JSON.parse(usuario).nome;
+      this.nomeUsuario = usuario.nome;
     } else {
       this.usuarioLogado = false;
       this.nomeUsuario = '';
@@ -61,14 +57,9 @@ export class HeaderComponent implements OnInit {
 
   sairDaConta() {
     localStorage.removeItem('usuario');
-
-    // dispara evento para atualizar todos os componentes que escutam
     window.dispatchEvent(new Event('usuarioAtualizado'));
-
-    // fecha dropdown
     const menu = document.getElementById('menu-usuario');
     if (menu) menu.classList.remove('ativo');
-
     this.router.navigate(['/home']);
   }
 }
