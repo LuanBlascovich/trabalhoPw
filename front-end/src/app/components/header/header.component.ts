@@ -63,7 +63,6 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/home']);
   }
 
-
   //direcionamento para a sessao sobre
   scrollTo(sectionId: string) {
     // Se já estamos na Home
@@ -84,5 +83,4 @@ export class HeaderComponent implements OnInit {
       });
     }
   }
-
 }

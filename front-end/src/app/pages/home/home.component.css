@@ -8,7 +8,6 @@ main {
   overflow-x: hidden;
 }
 
-/* Background */
 .background {
   background-image: url("../../../assets/images/background.jpg");
   background-size: cover;
@@ -27,7 +26,7 @@ main {
 /* ======== AULAS ======== */
 .aulas {
   background-color: #93b0ce;
-  padding: 10rem 0rem;
+  padding: 8rem 0rem;
 }
 
 .aulas h2 {
@@ -38,14 +37,15 @@ main {
 }
 
 .cards-aulas {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0.5rem;
+  justify-items: center;
+  padding: 0 8rem;
 }
 
 .card-aula {
-  background-color: #fff; /* mantém branco pro card */
+  background-color: #ffffff03; 
   border-radius: 20px;
   overflow: hidden;
   width: 300px;
@@ -75,7 +75,6 @@ main {
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
 }
 
-/* Botão de Agendamentos */
 .botao-aulas {
   margin-top: 3rem;
 }
@@ -127,7 +126,7 @@ main {
 .produto img {
   width: 100%;
   height: 400px;
-  object-fit: cover; /* preenche todo o espaço sem distorcer */
+  object-fit: cover; 
   padding: 0;
   background: none;
   border-radius: 10px 10px 0 0;
@@ -164,8 +163,7 @@ main {
 
 .btn-ver-mais:hover {
   background-color: #7697b7;
-    color: #ffffff;
-
+  color: #ffffff;
 }
 
 /* ======== SOBRE ======== */
@@ -194,10 +192,9 @@ main {
 }
 
 .subtitulo .linha-onda{
-    text-align: center;
-align-items: center;
+  text-align: center;
+  align-items: center;
   transform: translateX(-50%);
-
 }
 
 .texto .subtitulo  {
@@ -208,6 +205,7 @@ align-items: center;
   margin: 0 auto 1rem;
   display: block;
 }
+
 .sobre .texto .subtitulo  {
   display: block;
   width: 100%;
@@ -220,7 +218,7 @@ align-items: center;
 
 .linha-onda {
   width: 100%;
-  max-width: 100px; /* largura da linha */
+  max-width: 100px; 
   height: 4px;
   background-color: #93b0ce;
   margin: 1rem auto;
@@ -256,7 +254,6 @@ align-items: center;
   flex-direction: row-reverse; 
 }
 
-/* Foto do professor maior */
 .professor .foto img {
   width: 100%;
   height: 300px;
@@ -268,12 +265,10 @@ align-items: center;
   margin-bottom: -70px;
 }
 
-
 .professor .info {
   display: flex;
   flex-direction: column;
   text-align: left;
-
 }
 
 .professor .info .titulo {
@@ -290,19 +285,231 @@ align-items: center;
   color: #222;
 }
 
+
 /* ======== RESPONSIVIDADE ======== */
-@media (max-width: 768px) {
-  .cards-aulas,
+
+/* Telas grandes médias (até 1024px) */
+@media (max-width: 1024px) {
+  .aulas {
+    padding: 6rem 2rem;
+  }
+
+  .cards-aulas {
+    padding: 0 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+
+  .card-aula {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .destaques {
+    padding: 6rem 2rem;
+  }
+
   .produto-container {
-    flex-direction: column;
-    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .produto {
+    width: 220px;
   }
 
   .sobre {
-    flex-direction: column;
+    padding: 8rem 3rem;
+    gap: 2rem;
+  }
+
+  .ilustracao img {
+    width: 500px;
+    height: 400px;
   }
 
   .texto {
+    max-width: 400px;
+  }
+
+  .sobre .texto .subtitulo,
+  .linha-onda {
+    position: static;
+    transform: none;
+    margin: 1rem 0;
     text-align: center;
+  }
+
+  .texto h2 {
+    font-size: 1.8rem;
+  }
+
+  .texto p {
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+  }
+
+  .professor .foto img {
+    height: 250px;
+  }
+
+  .professor .info h3 {
+    font-size: 1.3rem;
+  }
+}
+
+/* Telas médias/pequenas (até 768px) */
+@media (max-width: 768px) {
+  .background {
+    height: 60vh;
+  }
+
+  .aulas {
+    padding: 4rem 1rem;
+  }
+
+  .aulas h2 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .cards-aulas {
+    padding: 0 1rem;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .card-aula {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .card-aula img {
+    height: 200px;
+  }
+
+  .btn-agendamentos {
+    padding: 0.8rem 2rem;
+    font-size: 0.9rem;
+  }
+
+  .destaques {
+    padding: 4rem 1rem;
+  }
+
+  .destaques h2 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .produto-container {
+    gap: 1rem;
+  }
+
+  .produto {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .produto img {
+    height: 300px;
+  }
+
+  .btn-ver-mais {
+    padding: 0.8rem 2rem;
+    font-size: 0.9rem;
+  }
+
+  /* SOBRE */
+  .sobre {
+    padding: 4rem 1rem;
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .ilustracao img {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    margin-bottom: 2rem;
+  }
+
+  .sobre .texto .subtitulo,
+  .linha-onda {
+    position: static;
+    transform: none;
+    margin: 1rem 0;
+  }
+
+  .texto {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .texto h2 {
+    font-size: 1.5rem;
+  }
+
+  .texto p {
+    font-size: 1rem;
+    line-height: 1.4rem;
+  }
+
+  .professor {
+    position: static;
+    margin-top: 2rem;
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  .professor .foto img {
+    height: 150px;
+  }
+
+  .professor .info h3 {
+    font-size: 1.2rem;
+  }
+}
+
+/* Telas muito pequenas (até 480px) */
+@media (max-width: 480px) {
+  .aulas h2,
+  .destaques h2 {
+    font-size: 1.3rem;
+  }
+
+  .produto img {
+    height: 250px;
+  }
+
+  .texto h2 {
+    font-size: 1.3rem;
+  }
+
+  .texto p {
+    font-size: 0.9rem;
+  }
+
+  .professor .foto img {
+    height: 120px;
+  }
+
+  .professor .info h3 {
+    font-size: 1.1rem;
+  }
+
+  .sobre {
+    padding: 3rem 1rem;
+  }
+
+  .ilustracao img {
+    max-width: 300px;
+    margin-bottom: 1.5rem;
+  }
+
+  .linha-onda {
+    max-width: 60px;
   }
 }
