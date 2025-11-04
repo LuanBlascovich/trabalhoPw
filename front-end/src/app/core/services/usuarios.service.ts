@@ -14,4 +14,8 @@ export class UsuariosService {
   cadastrar(usuario: Usuario): Observable<any> {
     return this.http.post(this.API + '/cadastrar', usuario);
   }
+
+  fazerLogin(usuario: Usuario): Observable<any> {
+    return this.http.post(this.API + '/login', usuario);
+  }
 }

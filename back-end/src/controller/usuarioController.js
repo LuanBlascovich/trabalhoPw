@@ -36,7 +36,15 @@ endpoints.post("/usuario/login", async (req, resp) => {
             return resp.status(401).send({ erro: "E-mail ou senha inválidos" });
         }
         const token = await generateToken(credenciais);
-        return resp.send({ token: token });
+        return resp.send({
+            token: token,
+            usuario: {
+                nome: credenciais.nome,
+                sobrenome: credenciais.sobrenome,
+                email: credenciais.email,
+                tipo: credenciais.tipo
+            }
+        });
     } catch (error) {
         console.error("Erro no endpoint /usuario/login:", error);
         return resp.status(500).send({ erro: "Erro interno do servidor" });
