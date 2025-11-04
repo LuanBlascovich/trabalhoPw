@@ -71,4 +71,25 @@ export class HeaderComponent implements OnInit {
 
     this.router.navigate(['/home']);
   }
+
+  //direcionamento para a sessao sobre
+  scrollTo(sectionId: string) {
+    // Se já estamos na Home
+    if (this.router.url === '/home' || this.router.url === '/') {
+      const el = document.getElementById(sectionId);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // Se estiver em outra rota, vai pra Home e depois faz o scroll
+      this.router.navigate(['/home']).then(() => {
+        setTimeout(() => {
+          const el = document.getElementById(sectionId);
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
+      });
+    }
+  }
 }

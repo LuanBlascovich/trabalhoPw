@@ -1,65 +1,57 @@
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Kumbh Sans", sans-serif;
 }
+
 html {
+  scroll-behavior: smooth;
+}
+
+
+html, body {
   height: 100%;
 }
+
 body {
-  font-family: "Kumbh", sans-serif;
+  display: flex;
+  flex-direction: column;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #e8ebed;
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
 }
 
 app-root {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 100vh; 
   flex: 1;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
+/* Conteudo da pagina ocupa o espaco e empurra o footer */
+router-outlet {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+app-footer {
+  margin-top: auto;
+  width: 100%;
+}
+
+
+h1, h2, h3, h4, h5, h6, p {
   margin: 0;
 }
 
-input,
-button,
-select,
-textarea {
+input, button, select, textarea {
   font-family: inherit;
 }
 
 button:focus,
 input:focus {
   outline: none;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  margin: 0;
-}
-
-input,
-button,
-select,
-textarea {
-  font-family: inherit;
 }

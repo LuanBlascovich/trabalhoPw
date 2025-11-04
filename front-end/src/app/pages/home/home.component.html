@@ -26,13 +26,13 @@
     </div>
 
     <div class="botao-aulas">
-      <a routerLink="/agendamentos" class="btn-agendamentos">AGENDAMENTOS</a>
+      <a routerLink="/agendamento" class="btn-agendamentos">AGENDAMENTOS</a>
     </div>
   </section>
 
   <!-- Produtos em Destaque -->
-   <section class="destaques">
-    <h2>Produtos em Destaque</h2>
+  <section class="destaques">
+    <h2>DESTAQUES</h2>
     <div class="produto-container">
       <div class="produto" *ngFor="let produto of produtos">
         <img [src]="produto.img" [alt]="produto.nome">
@@ -46,7 +46,7 @@
   </section>
 
   <!-- Sobre Nós -->
-  <section class="sobre">
+  <section id="sobre" class="sobre">
     <div class="ilustracao">
       <img src="assets/images/sobre-foto.png" alt="Mão Shaka" />
     </div>
@@ -75,5 +75,3 @@
     </div>
   </section>
 </main>
-
-
