@@ -1,3 +1,129 @@
-<!-- AVISO: O header e o Footer já estão importado em todas as paginas. 
-     Não é necessário criar outro header ou footer nesta página. -->
+<div class="container-carrinho">
 
+     <!-- Lista de produtos -->
+     <div class="lista-produtos">
+          <h1 class="titulo-pagina">CARRINHO</h1>
+
+          <!-- Cabeçalho da tabela -->
+          <div class="cabecalho-tabela">
+               <div class="produto-titulo">Produto</div>
+               <div class="titulos-info">
+                    <div class="quantidade-titulo">Quantidade</div>
+                    <div class="preco-titulo">Preço</div>
+                    <div class="subtotal-titulo">Subtotal</div>
+               </div>
+          </div>
+
+          <!-- Produto 1 -->
+          <div class="item-carrinho">
+               <div class="info-produto">
+                    <img class="imagem-produto" alt="Imagem do produto 1">
+                    <div class="detalhes-produto">
+                         <div class="nome-produto">Prancha</div>
+                         <div class="cor-produto">Cor: Azul</div>
+                         <div class="botao-remover">
+                              <span class="material-icons">close</span>
+                              <span>Remover</span>
+                         </div>
+                    </div>
+               </div>
+               <div class="informacoes-item">
+                    <div class="controle-quantidade">
+                         <button class="diminuir"><span class="material-icons">remove</span></button>
+                         <span class="quantidade">1</span>
+                         <button class="aumentar"><span class="material-icons">add</span></button>
+                    </div>
+                    <div class="preco-item">R$2.350,00</div>
+                    <div class="subtotal-item">R$2.350,00</div>
+               </div>
+          </div>
+
+          <!-- Produto 2 -->
+          <div class="item-carrinho">
+               <div class="info-produto">
+                    <img class="imagem-produto" alt="Imagem do produto 2">
+                    <div class="detalhes-produto">
+                         <div class="nome-produto">Prancha Surf</div>
+                         <div class="cor-produto">Cor: Vermelha</div>
+                         <div class="botao-remover">
+                              <span class="material-icons">close</span>
+                              <span>Remover</span>
+                         </div>
+                    </div>
+               </div>
+               <div class="informacoes-item">
+                    <div class="controle-quantidade">
+                         <button class="diminuir"><span class="material-icons">remove</span></button>
+                         <span class="quantidade">1</span>
+                         <button class="aumentar"><span class="material-icons">add</span></button>
+                    </div>
+                    <div class="preco-item">R$1.500,00</div>
+                    <div class="subtotal-item">R$3.000,00</div>
+               </div>
+          </div>
+
+          <!-- Produto 3 -->
+          <div class="item-carrinho">
+               <div class="info-produto">
+                    <img class="imagem-produto" alt="Imagem do produto 3">
+                    <div class="detalhes-produto">
+                         <div class="nome-produto">Roupão de Surf</div>
+                         <div class="cor-produto">Cor: Preto</div>
+                         <div class="botao-remover">
+                              <span class="material-icons">close</span>
+                              <span>Remover</span>
+                         </div>
+                    </div>
+               </div>
+               <div class="informacoes-item">
+                    <div class="controle-quantidade">
+                         <button class="diminuir"><span class="material-icons">remove</span></button>
+                         <span class="quantidade">1</span>
+                         <button class="aumentar"><span class="material-icons">add</span></button>
+                    </div>
+                    <div class="preco-item">R$350,00</div>
+                    <div class="subtotal-item">R$350,00</div>
+               </div>
+          </div>
+
+     </div>
+
+     <!-- Resumo do pedido -->
+     <div class="resumo-pedido">
+          <h2 class="titulo-resumo">Resumo</h2>
+
+          <div class="opcoes-envio">
+               <div class="envio">
+                    <input type="radio" name="envio" checked>
+                    <label>Envio Econômico</label>
+                    <span>R$20,00</span>
+               </div>
+               <div class="envio">
+                    <input type="radio" name="envio">
+                    <label>Envio Expresso</label>
+                    <span>R$45,00</span>
+               </div>
+               <div class="envio">
+                    <input type="radio" name="envio">
+                    <label>Retirar</label>
+                    <span>Grátis</span>
+               </div>
+          </div>
+
+          <div class="resumo-valores">
+               <div class="subtotal">
+                    <span>Subtotal</span>
+                    <span>R$5.700,00</span>
+               </div>
+               <div class="total">
+                    <span>Total</span>
+                    <span>R$5.720,00</span>
+               </div>
+          </div>
+
+          <div class="botao-comprar">
+               <a routerLink="/compra-confirmacao" class="btn-comprar">COMPRAR</a>
+          </div>
+     </div>
+
+</div>

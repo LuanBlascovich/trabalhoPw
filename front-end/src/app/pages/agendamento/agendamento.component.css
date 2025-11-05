@@ -5,7 +5,7 @@
 
 .agendamento-container {
   min-height: calc(100vh - 200px);
-  background-color: #e8ebed;
+  background-color: #eaeaea;
   padding: 60px 20px 80px;
   display: flex;
   flex-direction: column;
@@ -13,13 +13,12 @@
 }
 
 .page-title {
-  
-  font-size: 22px;
+  font-size: 1.7rem;
   font-weight: 700;
-  color: #111;
-  margin-bottom: 15px;
+  color: #222;
+  margin-top: 20px;
+  margin-bottom: 40px;
 }
-
 
 .card {
   background-color: #ffffff;
@@ -133,5 +132,4 @@
   .card {
     padding: 30px 25px;
   }
-
 }

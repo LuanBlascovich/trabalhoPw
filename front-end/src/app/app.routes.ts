@@ -9,6 +9,7 @@ import { ConfirmacaoComponent } from './pages/confirmacao/confirmacao.component'
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ProdutosComponent } from './pages/produtos/produtos.component';
+import { CompraConfirmacaoComponent } from './pages/compra-confirmacao/compra-confirmacao.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -19,7 +20,8 @@ export const routes: Routes = [
   { path: 'carrinho', component: CarrinhoComponent },
   { path: 'confirmacao', component: ConfirmacaoComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'login', component: LoginComponent},
+  { path: 'login', component: LoginComponent },
   { path: 'produtos', component: ProdutosComponent },
+  { path: 'compra-confirmacao', component: CompraConfirmacaoComponent },
   { path: '**', redirectTo: 'home' },
 ];

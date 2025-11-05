@@ -1,0 +1,4 @@
+#CABDB4 -- bege
+#eaeaea -- cor de fundo
+#93b0ce -- cor do header/footer
+#222 -- titulo das paginas

@@ -1,0 +1,98 @@
+/* ===== CONTAINER PRINCIPAL ===== */
+.order-confirmation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  font-family: 'Poppins', sans-serif;
+  color: #23262f;
+  padding: 60px 20px;
+}
+
+/* ===== TÍTULO ===== */
+.order-title {
+  font-size: 36px;
+  font-weight: 600;
+  margin-bottom: 40px;
+  text-align: center;
+  color: #1d1d1d;
+}
+
+/* ===== CAIXA DE INFORMAÇÕES ===== */
+.order-box {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  padding: 40px 60px;
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ===== CADA LINHA DE INFORMAÇÃO ===== */
+.order-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 12px;
+}
+
+.order-item:last-child {
+  border-bottom: none;
+}
+
+.order-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #6c7275;
+  text-transform: uppercase;
+}
+
+.order-value {
+  font-size: 16px;
+  color: #141718;
+  font-weight: 500;
+}
+
+/* ===== BOTÃO OPCIONAL ===== */
+.back-button {
+  margin-top: 30px;
+  background-color: #007bff;
+  color: #fff;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  align-self: center;
+  transition: background 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 600px) {
+  .order-title {
+    font-size: 28px;
+  }
+
+  .order-box {
+    padding: 30px 20px;
+  }
+
+  .order-label {
+    font-size: 13px;
+  }
+
+  .order-value {
+    font-size: 15px;
+  }
+}

@@ -15,3 +15,19 @@ export interface Produto {
   preco: number;
   imagem?: string;
 }
+
+export interface ProdutoCarrinho {
+  id: number;
+  nome: string;
+  preco: number;
+  imagem?: string;
+  cor?: string;         
+  quantidade?: number;  
+}
+
+export interface Pedido {
+  codigo: string;
+  data: Date;
+  total: number;
+  pagamento: string;
+}
