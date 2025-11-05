@@ -9,7 +9,7 @@ import { ConfirmacaoComponent } from './pages/confirmacao/confirmacao.component'
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ProdutosComponent } from './pages/produtos/produtos.component';
-
+import { CadastrarProdutoComponent } from './pages/cadastrar-produto/cadastrar-produto.component';
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'adm', component: AdmComponent },
@@ -19,9 +19,11 @@ export const routes: Routes = [
   { path: 'carrinho', component: CarrinhoComponent },
   { path: 'confirmacao', component: ConfirmacaoComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'login', component: LoginComponent},
+  { path: 'login', component: LoginComponent },
   { path: 'produtos', component: ProdutosComponent },
-  { path: '**',
-    // mudar e colocar Home
-    redirectTo: 'adm' },
+  { path: 'cadastro-produto', component: CadastrarProdutoComponent },
+  {
+    path: '**',
+    redirectTo: 'adm', // 🔹 volta a redirecionar para a página do ADM
+  },
 ];

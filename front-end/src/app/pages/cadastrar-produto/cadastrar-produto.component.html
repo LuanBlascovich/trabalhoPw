@@ -1,0 +1,23 @@
+<section class="cadastro-produto">
+  <h2>Cadastrar Produto</h2>
+
+  <form (ngSubmit)="cadastrar()">
+    <label>Nome:</label>
+    <input type="text" [(ngModel)]="produto.nome" name="nome" required />
+
+    <label>Descrição:</label>
+    <textarea [(ngModel)]="produto.descricao" name="descricao"></textarea>
+
+    <label>Preço:</label>
+    <input type="number" [(ngModel)]="produto.preco" name="preco" required />
+
+    <label>Imagem:</label>
+    <input type="file" (change)="onFileChange($event)" accept="image/*" />
+
+    <div *ngIf="imagemPreview" class="preview">
+      <img [src]="imagemPreview" alt="Prévia da imagem" />
+    </div>
+
+    <button type="submit">Cadastrar</button>
+  </form>
+</section>

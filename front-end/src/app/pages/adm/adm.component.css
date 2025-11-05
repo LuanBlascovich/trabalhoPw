@@ -83,14 +83,18 @@
   font-weight: 600;
   color: #333;
   margin-bottom: 1rem;
+  text-align: center;
 }
+
 
 /* TABELA */
 .agendamento table {
-  width: 80%;
+  width: 84%;
   border-collapse: collapse;
-  text-align: left;
+  margin-left: auto;
+  margin-right: 0;
 }
+
 
 .agendamento thead {
   background-color: #fafafa;
@@ -118,4 +122,8 @@
 /* INPUT CHECKBOX */
 .agendamento input[type="checkbox"] {
   transform: scale(1.2);
+}
+
+div{
+  display: flex;
 }
