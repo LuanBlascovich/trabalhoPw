@@ -1,18 +1,26 @@
-<!-- AVISO: O header e o Footer já estão importado em todas as paginas. 
-     Não é necessário criar outro header ou footer nesta página. -->
-
+<!-- AVISO: O header e o Footer já estão importados em todas as páginas. Não é necessário criar outro header ou footer nesta página. -->
 <header class="header" [class.header-home]="isHome">
   <!-- Hamburguer (mobile) -->
   <span class="material-icons hamburger" (click)="toggleMenu()">menu</span>
 
   <!-- Menu -->
   <nav class="menu" [class.active]="menuOpen">
-    <div class="menu-item"><a routerLink="/home">HOME</a></div>
-    <div class="menu-item"><a routerLink="/aulas">AULAS</a></div>
-    <div class="menu-item"><a routerLink="/produtos">PRODUTOS</a></div>
-    <div class="menu-item"><a (click)="scrollTo('sobre')">SOBRE</a></div>
+    <div class="menu-item">
+      <a routerLink="/home">HOME</a>
+    </div>
+    <div class="menu-item">
+      <a routerLink="/aulas">AULAS</a>
+    </div>
+    <div class="menu-item">
+      <a routerLink="/produtos">PRODUTOS</a>
+    </div>
+    <div class="menu-item" *ngIf="tipoUsuario === 'administrador' && usuarioLogado">
+      <a routerLink="/adm">ADMINISTRADOR</a>
+    </div>
+    <div class="menu-item">
+      <a (click)="scrollTo('sobre')">SOBRE</a>
+    </div>
   </nav>
-    
 
   <!-- Logo -->
   <div class="logo">
@@ -29,7 +37,7 @@
     <!-- Menu do usuário -->
     <div id="menu-usuario" class="menu-usuario">
       <p *ngIf="usuarioLogado">Olá, {{ nomeUsuario }}!</p>
-        <hr class="divisor" />
+      <hr class="divisor" />
       <button (click)="sairDaConta()">Sair</button>
     </div>
   </div>

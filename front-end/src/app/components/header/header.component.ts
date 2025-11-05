@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, RouterModule } from '@angular/router';
+import { Router, RouterModule, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -13,17 +13,17 @@ export class HeaderComponent implements OnInit {
   menuOpen = false;
   usuarioLogado = false;
   nomeUsuario = '';
+  tipoUsuario = '';
   isHome = false;
 
   constructor(private router: Router) {}
 
   ngOnInit() {
     this.atualizarUsuario();
-    this.router.events.subscribe(() => {
-      this.isHome = this.router.url === '/home';
+    this.isHome = this.router.url === '/home';
+    window.addEventListener('usuarioAtualizado', () => {
+      this.atualizarUsuario();
     });
-
-    window.addEventListener('usuarioAtualizado', () => this.atualizarUsuario());
   }
 
   atualizarUsuario() {
@@ -32,9 +32,11 @@ export class HeaderComponent implements OnInit {
       const usuario = JSON.parse(usuarioStr);
       this.usuarioLogado = true;
       this.nomeUsuario = usuario.nome;
+      this.tipoUsuario = usuario.tipo;
     } else {
       this.usuarioLogado = false;
       this.nomeUsuario = '';
+      this.tipoUsuario = '';
     }
   }
 
@@ -49,38 +51,29 @@ export class HeaderComponent implements OnInit {
   abrirUsuario() {
     if (!this.usuarioLogado) {
       this.router.navigate(['/login']);
-    } else {
-      const menu = document.getElementById('menu-usuario');
-      if (menu) menu.classList.toggle('ativo');
+      return;
     }
+    document.getElementById('menu-usuario')?.classList.toggle('ativo');
   }
 
   sairDaConta() {
     localStorage.removeItem('usuario');
     window.dispatchEvent(new Event('usuarioAtualizado'));
-    const menu = document.getElementById('menu-usuario');
-    if (menu) menu.classList.remove('ativo');
+    document.getElementById('menu-usuario')?.classList.remove('ativo');
     this.router.navigate(['/home']);
+    alert('Usuário deslogado com sucesso!');
   }
 
-  //direcionamento para a sessao sobre
   scrollTo(sectionId: string) {
-    // Se já estamos na Home
-    if (this.router.url === '/home' || this.router.url === '/') {
-      const el = document.getElementById(sectionId);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
-      }
+    const scroll = () =>
+      document
+        .getElementById(sectionId)
+        ?.scrollIntoView({ behavior: 'smooth' });
+
+    if (this.router.url === '/' || this.router.url === '/home') {
+      scroll();
     } else {
-      // Se estiver em outra rota, vai pra Home e depois faz o scroll
-      this.router.navigate(['/home']).then(() => {
-        setTimeout(() => {
-          const el = document.getElementById(sectionId);
-          if (el) {
-            el.scrollIntoView({ behavior: 'smooth' });
-          }
-        }, 100);
-      });
+      this.router.navigate(['/home']).then(() => setTimeout(scroll, 100));
     }
   }
 }
