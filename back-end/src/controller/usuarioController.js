@@ -51,4 +51,9 @@ endpoints.post("/usuario/login", async (req, resp) => {
     }
 });
 
+endpoints.get('/usuario/listar', async (req, resp) => {
+    const clientes = await repo.listar();
+    resp.status(200).send(clientes);
+});
+
 export default endpoints;

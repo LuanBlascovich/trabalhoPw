@@ -20,3 +20,11 @@ export async function fazerLogin(login) {
         [login.email, login.senha])
     return info[0];
 }
+
+export async function listar() {
+    const comando =
+        `SELECT id_usuario, nome, sobrenome, email, data_criacao 
+        FROM usuario WHERE tipo = 'cliente'`;
+    const [info] = await connection.query(comando);
+    return info;
+}

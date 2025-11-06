@@ -1,0 +1,41 @@
+<!-- LAYOUT ADMINISTRADOR SIMPLIFICADO -->
+<div class="admin-container">
+
+    <!-- SIDEBAR -->
+    <nav class="sidebar">
+        <h3>Navegação</h3>
+        <ul>
+            <li><a routerLink="/admin/produtos">Produtos</a></li>
+            <li><a routerLink="/admin/agendamentos">Agendamentos</a></li>
+            <li><a routerLink="/admin/clientes">Clientes</a></li>
+            <li><a routerLink="/admin/pedidos">Pedidos</a></li>
+        </ul>
+    </nav>
+
+    <!-- ÁREA PRINCIPAL -->
+    <main class="main-content">
+        <h2>Lista de Clientes</h2>
+
+        <table class="user-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Sobrenome</th>
+                    <th>Email</th>
+                    <th>Data de Criação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let cliente of clientes">
+                    <td>{{ cliente.id_usuario || '-' }}</td>
+                    <td>{{ cliente.nome }}</td>
+                    <td>{{ cliente.sobrenome || '-' }}</td>
+                    <td>{{ cliente.email }}</td>
+                    <td>{{ cliente.data_criacao | date:'dd/MM/yyyy HH:mm'}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+</div>

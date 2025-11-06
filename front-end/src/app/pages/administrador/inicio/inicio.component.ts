@@ -1,14 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-
 @Component({
-  selector: 'app-adm',
+  selector: 'app-inicio',
   standalone: true,
   imports: [RouterModule],
-  templateUrl: './adm.component.html',
-  styleUrl: './adm.component.css'
+  templateUrl: './inicio.component.html',
+  styleUrl: './inicio.component.css',
 })
-export class AdmComponent {
-
-}
+export class InicioComponent {}

@@ -31,6 +31,7 @@ export class LoginComponent {
       next: (res) => {
         if (res.usuario) {
           localStorage.setItem('usuario', JSON.stringify(res.usuario));
+          localStorage.setItem('token', res.token);
           window.dispatchEvent(new Event('usuarioAtualizado'));
           alert(`Bem-vindo, ${res.usuario.nome}!`);
           this.router.navigate(['/home']);

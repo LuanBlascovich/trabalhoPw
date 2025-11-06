@@ -18,4 +18,8 @@ export class UsuariosService {
   fazerLogin(usuario: Usuario): Observable<any> {
     return this.http.post(this.API + '/login', usuario);
   }
+
+  listar(): Observable<Usuario[]> {
+    return this.http.get<Usuario[]>(this.API + '/listar');
+  }
 }

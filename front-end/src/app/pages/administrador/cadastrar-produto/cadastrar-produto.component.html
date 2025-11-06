@@ -1,0 +1,45 @@
+<!-- LAYOUT ADMINISTRADOR -->
+<div class="admin-container">
+
+    <!-- SIDEBAR -->
+    <nav class="sidebar">
+        <h3>Navegação</h3>
+        <ul>
+            <li><a routerLink="/admin/produtos">Produtos</a></li>
+            <li><a routerLink="/admin/agendamentos">Agendamentos</a></li>
+            <li><a routerLink="/admin/clientes">Clientes</a></li>
+            <li><a routerLink="/admin/pedidos">Pedidos</a></li>
+        </ul>
+    </nav>
+
+    <!-- ÁREA PRINCIPAL -->
+    <main class="main-content">
+        <h2 class="titulo-pagina">
+            {{ idProduto ? 'Editar Produto' : 'Cadastrar Produto' }}
+        </h2>
+
+        <section class="cadastro-produto">
+            <form (ngSubmit)="salvar()">
+                <label>Nome:</label>
+                <input type="text" [(ngModel)]="produto.nome" name="nome" required />
+
+                <label>Descrição:</label>
+                <textarea [(ngModel)]="produto.descricao" name="descricao"></textarea>
+
+                <label>Preço:</label>
+                <input type="number" [(ngModel)]="produto.preco" name="preco" required />
+
+                <label>Imagem:</label>
+                <input type="file" (change)="onFileChange($event)" accept="image/*" />
+
+                <!-- Pré-visualização da imagem -->
+                <div *ngIf="imagemPreview" class="preview">
+                    <img [src]="imagemPreview" alt="Prévia da imagem" />
+                </div>
+
+                <button type="submit">{{ idProduto ? 'Atualizar' : 'Cadastrar' }}</button>
+            </form>
+        </section>
+    </main>
+
+</div>

@@ -4,7 +4,7 @@ export interface Usuario {
   sobrenome?: string;
   email: string;
   senha: string;
-  tipo?: 'administrador' | 'instrutor' | 'cliente';
+  tipo?: 'administrador' | 'cliente';
   data_criacao?: string;
 }
 
