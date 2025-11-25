@@ -17,12 +17,12 @@ export interface Produto {
 }
 
 export interface ProdutoCarrinho {
-  id: number;
+  id_produto: number;
   nome: string;
+  descricao: string;
   preco: number;
   imagem?: string;
-  cor?: string;         
-  quantidade?: number;  
+  quantidade: number;
 }
 
 export interface Pedido {

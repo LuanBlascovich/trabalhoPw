@@ -1,64 +1,95 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ProdutoCarrinho } from '../../core/types/types';
-import { CompraConfirmacaoComponent } from '../compra-confirmacao/compra-confirmacao.component';
+import { CarrinhoService } from '../../core/services/carrinho.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-carrinho',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule, HttpClientModule],
   templateUrl: './carrinho.component.html',
-  styleUrls: ['./carrinho.component.css'], // corrigi aqui
+  styleUrls: ['./carrinho.component.css'],
 })
-export class CarrinhoComponent {
-  constructor(private router: Router) {}
+export class CarrinhoComponent implements OnInit {
+  carrinho: ProdutoCarrinho[] = [];
+  total: number = 0;
 
-  produtos: ProdutoCarrinho[] = [
-    {
-      id: 1,
-      nome: 'Prancha Surf',
-      cor: 'Vermelha',
-      preco: 1500,
-      quantidade: 1,
-      imagem: 'prancha.jpg',
-    },
-    {
-      id: 2,
-      nome: 'Roupão de Surf',
-      cor: 'Preto',
-      preco: 350,
-      quantidade: 2,
-      imagem: 'roupao.jpg',
-    },
-  ];
+  constructor(
+    private router: Router,
+    private carrinhoService: CarrinhoService,
+    private http: HttpClient
+  ) {}
 
-  calcularSubtotal(): number {
-    return this.produtos.reduce(
-      (acc, prod) => acc + prod.preco * (prod.quantidade ?? 1),
+  ngOnInit() {
+    this.carregarCarrinho();
+  }
+
+  carregarCarrinho() {
+    this.carrinho = this.carrinhoService.getItens();
+    this.calcularTotal();
+  }
+
+  aumentar(item: ProdutoCarrinho) {
+    this.carrinhoService.aumentar(item.id_produto);
+    this.carregarCarrinho();
+  }
+
+  diminuir(item: ProdutoCarrinho) {
+    this.carrinhoService.diminuir(item.id_produto);
+    this.carregarCarrinho();
+  }
+
+  remover(item: ProdutoCarrinho) {
+    this.carrinhoService.remover(item.id_produto);
+    this.carregarCarrinho();
+  }
+
+  calcularTotal() {
+    this.total = this.carrinho.reduce(
+      (acc, item) => acc + item.preco * item.quantidade,
       0
     );
   }
 
-  calcularTotal(): number {
-    const envio = this.produtos.length > 0 ? 20 : 0;
-    return this.calcularSubtotal() + envio;
-  }
-
-  removerProduto(index: number) {
-    this.produtos.splice(index, 1);
-  }
-
-  aumentarQuantidade(prod: ProdutoCarrinho) {
-    if (!prod.quantidade) prod.quantidade = 1;
-    prod.quantidade++;
-  }
-
-  diminuirQuantidade(prod: ProdutoCarrinho) {
-    if (prod.quantidade && prod.quantidade > 1) prod.quantidade--;
-  }
-
   finalizarCompra() {
-    this.router.navigate(['/compra-confirmacao']);
+    if (this.carrinho.length === 0) {
+      alert('O carrinho está vazio!');
+      return;
+    }
+
+    const payload = {
+      itens: this.carrinho.map((p) => ({
+        id_produto: p.id_produto!,
+        preco: p.preco,
+        quantidade: p.quantidade,
+      })),
+    };
+
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+      alert('Você precisa estar logado para finalizar a compra!');
+      return;
+    }
+
+    console.log('Payload enviado:', payload);
+
+    this.http
+      .post(this.carrinhoService.API, payload, {
+        headers: { 'x-access-token': token },
+      })
+      .subscribe({
+        next: () => {
+          this.carrinhoService.limpar();
+          this.carregarCarrinho();
+          this.router.navigate(['/compra-confirmacao']);
+        },
+        error: (err) => {
+          console.error(err);
+          alert('Não foi possível finalizar a compra.');
+        },
+      });
   }
 }

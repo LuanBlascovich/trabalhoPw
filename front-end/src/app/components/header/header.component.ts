@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, RouterModule, NavigationEnd } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { CarrinhoService } from '../../core/services/carrinho.service';
 
 @Component({
   selector: 'app-header',
@@ -16,7 +17,10 @@ export class HeaderComponent implements OnInit {
   tipoUsuario = '';
   isHome = false;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private carrinhoService: CarrinhoService
+  ) {}
 
   ngOnInit() {
     this.atualizarUsuario();
@@ -58,6 +62,7 @@ export class HeaderComponent implements OnInit {
 
   sairDaConta() {
     localStorage.removeItem('usuario');
+    this.carrinhoService.limpar();
     window.dispatchEvent(new Event('usuarioAtualizado'));
     document.getElementById('menu-usuario')?.classList.remove('ativo');
     this.router.navigate(['/home']);

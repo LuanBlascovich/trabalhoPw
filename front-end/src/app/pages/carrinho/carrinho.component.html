@@ -1,129 +1,73 @@
 <div class="container-carrinho">
 
-     <!-- Lista de produtos -->
-     <div class="lista-produtos">
-          <h1 class="titulo-pagina">CARRINHO</h1>
+     <h1 class="titulo-pagina">CARRINHO</h1>
 
-          <!-- Cabeçalho da tabela -->
-          <div class="cabecalho-tabela">
-               <div class="produto-titulo">Produto</div>
-               <div class="titulos-info">
-                    <div class="quantidade-titulo">Quantidade</div>
-                    <div class="preco-titulo">Preço</div>
-                    <div class="subtotal-titulo">Subtotal</div>
-               </div>
-          </div>
+     <table class="tabela-carrinho" *ngIf="(carrinho || []).length > 0">
+          <thead>
+               <tr>
+                    <th>Produto</th>
+                    <th>Quantidade</th>
+                    <th>Preço</th>
+                    <th>Subtotal</th>
+                    <th></th>
+               </tr>
+          </thead>
 
-          <!-- Produto 1 -->
-          <div class="item-carrinho">
-               <div class="info-produto">
-                    <img class="imagem-produto" alt="Imagem do produto 1">
-                    <div class="detalhes-produto">
-                         <div class="nome-produto">Prancha</div>
-                         <div class="cor-produto">Cor: Azul</div>
-                         <div class="botao-remover">
-                              <span class="material-icons">close</span>
-                              <span>Remover</span>
+          <tbody>
+               <tr *ngFor="let item of carrinho || []">
+                    <td>
+                         <div class="produto-info">
+                              <img [src]="'http://localhost:5010/' + item.imagem" class="imagem-produto" alt="{{ item.nome }}">
+                              <div class="detalhes-produto">
+                                   <div class="nome-produto">{{ item.nome }}</div>
+                              </div>
                          </div>
-                    </div>
-               </div>
-               <div class="informacoes-item">
-                    <div class="controle-quantidade">
-                         <button class="diminuir"><span class="material-icons">remove</span></button>
-                         <span class="quantidade">1</span>
-                         <button class="aumentar"><span class="material-icons">add</span></button>
-                    </div>
-                    <div class="preco-item">R$2.350,00</div>
-                    <div class="subtotal-item">R$2.350,00</div>
-               </div>
-          </div>
+                    </td>
 
-          <!-- Produto 2 -->
-          <div class="item-carrinho">
-               <div class="info-produto">
-                    <img class="imagem-produto" alt="Imagem do produto 2">
-                    <div class="detalhes-produto">
-                         <div class="nome-produto">Prancha Surf</div>
-                         <div class="cor-produto">Cor: Vermelha</div>
-                         <div class="botao-remover">
-                              <span class="material-icons">close</span>
-                              <span>Remover</span>
+                    <td>
+                         <div class="controle-quantidade">
+                              <button (click)="diminuir(item)">
+                                   <span class="material-icons">remove</span>
+                              </button>
+
+                              <span class="quantidade">{{ item.quantidade }}</span>
+
+                              <button (click)="aumentar(item)">
+                                   <span class="material-icons">add</span>
+                              </button>
                          </div>
-                    </div>
-               </div>
-               <div class="informacoes-item">
-                    <div class="controle-quantidade">
-                         <button class="diminuir"><span class="material-icons">remove</span></button>
-                         <span class="quantidade">1</span>
-                         <button class="aumentar"><span class="material-icons">add</span></button>
-                    </div>
-                    <div class="preco-item">R$1.500,00</div>
-                    <div class="subtotal-item">R$3.000,00</div>
-               </div>
-          </div>
+                    </td>
 
-          <!-- Produto 3 -->
-          <div class="item-carrinho">
-               <div class="info-produto">
-                    <img class="imagem-produto" alt="Imagem do produto 3">
-                    <div class="detalhes-produto">
-                         <div class="nome-produto">Roupão de Surf</div>
-                         <div class="cor-produto">Cor: Preto</div>
-                         <div class="botao-remover">
+                    <td>
+                         {{ item.preco | currency:'BRL':'symbol' }}
+                    </td>
+
+                    <td>
+                         {{ (item.preco * item.quantidade) | currency:'BRL':'symbol' }}
+                    </td>
+
+                    <td>
+                         <button class="botao-remover" (click)="remover(item)">
                               <span class="material-icons">close</span>
-                              <span>Remover</span>
-                         </div>
-                    </div>
-               </div>
-               <div class="informacoes-item">
-                    <div class="controle-quantidade">
-                         <button class="diminuir"><span class="material-icons">remove</span></button>
-                         <span class="quantidade">1</span>
-                         <button class="aumentar"><span class="material-icons">add</span></button>
-                    </div>
-                    <div class="preco-item">R$350,00</div>
-                    <div class="subtotal-item">R$350,00</div>
-               </div>
-          </div>
+                         </button>
+                    </td>
+               </tr>
+          </tbody>
+     </table>
 
+     <div *ngIf="carrinho?.length === 0" class="carrinho-vazio">
+          Seu carrinho está vazio.
      </div>
 
-     <!-- Resumo do pedido -->
-     <div class="resumo-pedido">
-          <h2 class="titulo-resumo">Resumo</h2>
-
-          <div class="opcoes-envio">
-               <div class="envio">
-                    <input type="radio" name="envio" checked>
-                    <label>Envio Econômico</label>
-                    <span>R$20,00</span>
-               </div>
-               <div class="envio">
-                    <input type="radio" name="envio">
-                    <label>Envio Expresso</label>
-                    <span>R$45,00</span>
-               </div>
-               <div class="envio">
-                    <input type="radio" name="envio">
-                    <label>Retirar</label>
-                    <span>Grátis</span>
-               </div>
+     <div class="total-container" *ngIf="(carrinho || []).length > 0">
+          <div class="total-linha">
+               <span>Total:</span>
+               <span>{{ total | currency:'BRL':'symbol' }}</span>
           </div>
 
-          <div class="resumo-valores">
-               <div class="subtotal">
-                    <span>Subtotal</span>
-                    <span>R$5.700,00</span>
-               </div>
-               <div class="total">
-                    <span>Total</span>
-                    <span>R$5.720,00</span>
-               </div>
-          </div>
-
-          <div class="botao-comprar">
-               <a routerLink="/compra-confirmacao" class="btn-comprar">COMPRAR</a>
-          </div>
+          <button class="btn-comprar" (click)="finalizarCompra()">
+               REALIZAR COMPRA
+          </button>
      </div>
 
 </div>

@@ -29,6 +29,7 @@ export class LoginComponent {
 
     this.usuariosService.fazerLogin(usuario as Usuario).subscribe({
       next: (res) => {
+        console.log('Login response:', res);
         if (res.usuario) {
           localStorage.setItem('usuario', JSON.stringify(res.usuario));
           localStorage.setItem('token', res.token);
