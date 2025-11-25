@@ -27,7 +27,6 @@ export class CadastrarProdutoComponent implements OnInit {
   ngOnInit(): void {
     this.idProduto = Number(this.route.snapshot.paramMap.get('id')) || null;
     if (this.idProduto) {
-      // Se houver id, busca o produto
       this.produtoService.buscarPorId(this.idProduto).subscribe({
         next: (p) => {
           this.produto = p;
@@ -56,13 +55,18 @@ export class CadastrarProdutoComponent implements OnInit {
   }
 
   salvar(): void {
-    if (!this.produto.nome || !this.produto.preco) {
-      alert('Preencha todos os campos obrigatórios!');
+    if (
+      !this.produto.nome ||
+      this.produto.preco === null ||
+      this.produto.preco <= 0
+    ) {
+      alert(
+        'Preencha todos os campos obrigatórios e insira um preço maior que zero!'
+      );
       return;
     }
 
     if (this.idProduto) {
-      // Atualizar produto
       this.produtoService
         .atualizar(this.idProduto, this.produto, this.imagemFile || undefined)
         .subscribe({
@@ -76,7 +80,6 @@ export class CadastrarProdutoComponent implements OnInit {
           },
         });
     } else {
-      // Cadastrar novo produto
       this.produtoService
         .cadastrar(this.produto, this.imagemFile || undefined)
         .subscribe({

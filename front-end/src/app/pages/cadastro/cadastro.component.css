@@ -1,16 +1,8 @@
 * {
+  font-family: "Poppins", sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-}
-
-body {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #f0f2f5;
 }
 
 .container {
@@ -18,15 +10,15 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%;
-  max-width: 100%;
+  min-height: 80vh;
   padding: 20px;
 }
 
 .form-box {
-  background-color: rgba(255, 255, 255, 0.95);
-  padding: 2rem 3rem;
+  background: #fff;
+  padding: 2rem 2.5rem;
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
   width: 100%;
   max-width: 400px;
 }
@@ -34,13 +26,13 @@ body {
 h2 {
   text-align: center;
   margin-bottom: 1.5rem;
-  color: #000;
+  color: #222;
 }
 
 form label {
   display: block;
   font-size: 0.9rem;
-  color: #333;
+  color: #444;
   margin-bottom: 4px;
 }
 
@@ -51,26 +43,25 @@ form input {
   border: 1px solid #ccc;
   border-radius: 8px;
   font-size: 1rem;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition: border-color 0.2s;
 }
 
 form input:focus {
   border-color: #007bff;
-  box-shadow: 0 0 4px rgba(0, 123, 255, 0.4);
   outline: none;
 }
 
 .btn-primary {
   width: 100%;
   background-color: #007bff;
-  color: white;
+  color: #fff;
   border: none;
   padding: 10px;
   border-radius: 8px;
   cursor: pointer;
   font-size: 1rem;
   margin-top: 8px;
-  transition: 0.3s;
+  transition: background-color 0.2s;
 }
 
 .btn-primary:hover {
@@ -79,38 +70,9 @@ form input:focus {
 
 .divider {
   text-align: center;
-  color: #888;
+  color: #777;
   margin: 15px 0;
   font-size: 0.9rem;
-}
-
-.btn-facebook,
-.btn-google {
-  width: 100%;
-  padding: 10px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  font-size: 1rem;
-  margin-bottom: 10px;
-  transition: 0.3s;
-  color: white;
-}
-
-.btn-facebook {
-  background-color: #3b5998;
-}
-
-.btn-google {
-  background-color: #db4437;
-}
-
-.btn-facebook:hover {
-  background-color: #324b82;
-}
-
-.btn-google:hover {
-  background-color: #c33c2f;
 }
 
 .login-text {

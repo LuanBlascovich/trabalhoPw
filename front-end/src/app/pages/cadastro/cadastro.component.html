@@ -1,7 +1,4 @@
-<!-- AVISO: O header e o Footer já estão importado em todas as paginas. 
-     Não é necessário criar outro header ou footer nesta página. -->
-
-  <div class="container">
+<div class="container">
   <div class="form-box">
     <h2>Crie sua conta</h2>
     <form (ngSubmit)="cadastrar()">
@@ -18,11 +15,6 @@
       <input type="password" id="senha" placeholder="Senha" required [(ngModel)]="senha" name="senha">
 
       <button type="submit" class="btn-primary">Cadastrar</button>
-
-      <div class="divider">ou</div>
-
-      <button type="button" class="btn-facebook">Continuar com o Facebook</button>
-      <button type="button" class="btn-google">Cadastrar com o Google</button>
     </form>
     <p class="login-text">
       Já tem uma conta? <a routerLink="/login">Faça login</a>

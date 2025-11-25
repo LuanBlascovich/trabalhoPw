@@ -1,42 +1,50 @@
-<!-- LAYOUT ADMINISTRADOR SIMPLIFICADO -->
 <div class="admin-container">
 
-    <!-- SIDEBAR -->
     <nav class="sidebar">
         <h3>Navegação</h3>
         <ul>
-            <li><a routerLink="/admin/produtos">Produtos</a></li>
             <li><a routerLink="/admin/agendamentos">Agendamentos</a></li>
             <li><a routerLink="/admin/clientes">Clientes</a></li>
             <li><a routerLink="/admin/pedidos">Pedidos</a></li>
+            <li><a routerLink="/admin/produtos">Produtos</a></li>
         </ul>
     </nav>
 
-    <!-- ÁREA PRINCIPAL -->
     <main class="main-content">
-        <h2>Lista de produtos</h2>
+        <h2>Lista de Produtos</h2>
 
-        <!-- Botão para inserir novo produto -->
         <div class="acoes-superiores">
             <a routerLink="/admin/cadastrar-produto" class="btn-adicionar btn-inserir">Inserir Produto</a>
         </div>
 
-        <div class="produtos-container">
-            <div class="produto-card" *ngFor="let p of produtos">
-                <img *ngIf="p.imagem" [src]="'http://localhost:5010/' + p.imagem" [alt]="p.nome"
-                    class="produto-imagem" />
-                <div class="produto-info">
-                    <p><strong>ID:</strong> {{ p.id_produto }}</p>
-                    <h3 class="produto-nome">{{ p.nome }}</h3>
-                    <p class="produto-descricao">{{ p.descricao }}</p>
-                    <p class="produto-preco">{{ p.preco | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</p>
-                </div>
-                <div class="produto-acoes">
-                    <a [routerLink]="['/admin/cadastrar-produto', p.id_produto]" class="btn-adicionar">Alterar</a>
-                    <button class="btn-adicionar" (click)="excluirProduto(p.id_produto)">Excluir</button>
-                </div>
-            </div>
-        </div>
+        <table class="produtos-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Descrição</th>
+                    <th>Preço</th>
+                    <th>Imagem</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let p of produtos;">
+                    <td>{{ p.id_produto }}</td>
+                    <td>{{ p.nome }}</td>
+                    <td>{{ p.descricao }}</td>
+                    <td>{{ p.preco | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</td>
+                    <td>
+                        <img *ngIf="p.imagem" [src]="'http://localhost:5010/' + p.imagem" [alt]="p.nome"
+                            class="produto-imagem-tabela">
+                    </td>
+                    <td>
+                        <a [routerLink]="['/admin/cadastrar-produto', p.id_produto]" class="btn-adicionar">Alterar</a>
+                        <button class="btn-excluir" (click)="excluirProduto(p.id_produto)">Excluir</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </main>
 
 </div>

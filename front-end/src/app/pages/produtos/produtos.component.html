@@ -1,14 +1,9 @@
-<!-- AVISO: O header e o Footer já estão importado em todas as paginas. 
-     Não é necessário criar outro header ou footer nesta página. -->
-
 <div class="produtos-wrapper">
      <h2 class="titulo-pagina">PRODUTOS</h2>
-
      <div class="produtos-container">
           <div class="produto-card" *ngFor="let p of produtos">
                <img *ngIf="p.imagem" [src]="'http://localhost:5010/' + p.imagem" [alt]="p.nome"
                     class="produto-imagem" />
-
                <div class="produto-info">
                     <h3 class="produto-nome">{{ p.nome }}</h3>
                     <p class="produto-descricao">{{ p.descricao }}</p>
