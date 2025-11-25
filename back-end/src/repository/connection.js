@@ -7,6 +7,9 @@ const connection = await mysql.createConnection({
     database: process.env.MYSQL_DB
 });
 
-console.log('--> Conexão estabelecida <--');
+const azul = "\u001b[38;5;27m";
+const reset = "\u001b[0m";
+
+console.log(`${azul}..: Conexão estabelecida com sucesso :..${reset}`);
 
 export {connection}

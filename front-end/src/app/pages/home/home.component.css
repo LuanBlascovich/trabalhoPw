@@ -12,7 +12,7 @@ main {
   background-image: url("../../../assets/images/background.jpg");
   background-size: cover;
   background-position: center;
-  height: 85vh;
+  height: 80vh;
   width: 100%;
   display: flex;
   align-items: center;
@@ -26,7 +26,7 @@ main {
 /* ======== AULAS ======== */
 .aulas {
   background-color: #93b0ce;
-  padding: 8rem 0rem;
+  padding: 6rem 5rem;
 }
 
 .aulas h2 {
@@ -45,7 +45,7 @@ main {
 }
 
 .card-aula {
-  background-color: #ffffff03; 
+  background-color: #ffffff03;
   border-radius: 20px;
   overflow: hidden;
   width: 300px;
@@ -54,6 +54,7 @@ main {
   cursor: pointer;
   text-decoration: none;
   color: inherit;
+  transition: 0.3s;
 }
 
 .card-aula img {
@@ -75,10 +76,6 @@ main {
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
 }
 
-.botao-aulas {
-  margin-top: 3rem;
-}
-
 .btn-agendamentos {
   display: inline-block;
   background-color: #fff;
@@ -88,6 +85,7 @@ main {
   border-radius: 10px;
   text-decoration: none;
   transition: 0.3s;
+  margin-top: 50px;
 }
 
 .btn-agendamentos:hover {
@@ -97,7 +95,7 @@ main {
 /* ======== DESTAQUE ======== */
 .destaques {
   background-color: #cabdb4;
-  padding: 8rem 2rem;
+  padding: 5rem 2rem;
 }
 
 .destaques h2 {
@@ -118,17 +116,15 @@ main {
   background-color: #fff;
   border-radius: 10px;
   width: 250px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   padding-bottom: 1rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
 }
 
 .produto img {
   width: 100%;
   height: 400px;
-  object-fit: cover; 
-  padding: 0;
-  background: none;
+  object-fit: cover;
   border-radius: 10px 10px 0 0;
 }
 
@@ -146,33 +142,30 @@ main {
   transform: scale(1.05);
 }
 
-.ver-mais {
-  margin-top: 3rem;
-}
-
 .btn-ver-mais {
   display: inline-block;
   background-color: #93b0ce;
-  color: #000000;
+  color: #000;
   font-weight: 900;
   padding: 1rem 3rem;
   border-radius: 10px;
   text-decoration: none;
   transition: 0.3s;
+  margin-top: 50px;
 }
 
 .btn-ver-mais:hover {
   background-color: #7697b7;
-  color: #ffffff;
+  color: #fff;
 }
 
 /* ======== SOBRE ======== */
 .sobre {
   position: relative;
   background-color: #fff;
-  padding: 11rem 5rem;
+  padding: 10rem 5rem 0;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: row-reverse;
   align-items: center;
   justify-content: center;
   gap: 4rem;
@@ -181,58 +174,46 @@ main {
 .ilustracao img {
   width: 700px;
   max-width: 100%;
-  margin-bottom: -250px;
   height: 550px;
+  margin-bottom: -5px;
 }
 
 .texto {
   max-width: 500px;
-  text-align: left;
-  margin-top: -8rem;
+  text-align: justify;
+  margin-bottom: 320px;
 }
 
-.subtitulo .linha-onda{
-  text-align: center;
-  align-items: center;
-  transform: translateX(-50%);
-}
-
-.texto .subtitulo  {
+.texto .subtitulo {
   font-size: 1.2rem;
   text-transform: uppercase;
   font-weight: 600;
   color: #222;
-  margin: 0 auto 1rem;
-  display: block;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
-.sobre .texto .subtitulo  {
-  display: block;
-  width: 100%;
-  text-align: center;
+.sobre .texto .subtitulo {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  top: 6rem; 
+  top: 6rem;
 }
 
 .linha-onda {
-  width: 100%;
-  max-width: 100px; 
+  width: 100px;
   height: 4px;
   background-color: #93b0ce;
-  margin: 1rem auto;
-  border-radius: 5px;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
   top: 8rem;
+  border-radius: 5px;
 }
 
 .texto h2 {
   font-size: 2rem;
-  margin-top: 2.5rem;
-  margin-bottom: 1rem;
+  margin: 2.5rem 0 1rem;
   font-weight: 700;
 }
 
@@ -242,54 +223,99 @@ main {
   color: #333;
 }
 
+/* ======== PROFESSOR ======== */
 .professor {
   position: absolute;
-  bottom: 20px;
+  bottom: 0;
   right: 20px;
   display: flex;
+  flex-direction: row-reverse;
   align-items: center;
   gap: 1rem;
-  border-radius: 10px;
-  z-index: 2;
-  flex-direction: row-reverse; 
 }
 
 .professor .foto img {
   width: 100%;
   height: 300px;
-  position: relative;
   border-radius: 50%;
-  max-width: 100%;
-  overflow: hidden;
   object-fit: cover;
-  margin-bottom: -70px;
 }
 
 .professor .info {
   display: flex;
   flex-direction: column;
-  text-align: left;
-}
-
-.professor .info .titulo {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #555;
-  letter-spacing: -0.05em;
 }
 
 .professor .info h3 {
   margin: 0;
   font-size: 1.5rem;
   font-weight: 700;
-  color: #222;
 }
 
+@media (max-width: 1300px) {
+  .sobre {
+    gap: 2rem;
+  }
 
-/* ======== RESPONSIVIDADE ======== */
+  .ilustracao img {
+    width: 550px;
+    max-width: 100%;
+    height: 400px;
+    margin-bottom: -150px;
+  }
 
-/* Telas grandes médias (até 1024px) */
-@media (max-width: 1024px) {
+  .card-aula {
+    width: 250px;
+  }
+
+  .card-aula img {
+    height: 200px;
+  }
+
+  .card-aula h3 {
+    font-size: 1rem;
+    padding: 0.8rem 0;
+  }
+
+  .produto-container {
+    gap: 0.8rem;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .produto {
+    width: 200px;
+    padding-bottom: 0.5rem;
+  }
+
+  .produto img {
+    height: 300px;
+  }
+
+  .produto h3 {
+    font-size: 1rem;
+  }
+
+  .produto p {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 1100px) {
+  .sobre {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+    padding: 5rem 3rem 0 3rem;
+  }
+
+  .ilustracao,
+  .ilustracao img {
+    width: 500px;
+    height: 400px;
+  }
+
   .aulas {
     padding: 6rem 2rem;
   }
@@ -297,67 +323,42 @@ main {
   .cards-aulas {
     padding: 0 2rem;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
-  }
-
-  .card-aula {
-    width: 100%;
-    max-width: 280px;
   }
 
   .destaques {
-    padding: 6rem 2rem;
+    padding: 5rem 11rem;
   }
 
   .produto-container {
-    gap: 1.5rem;
-  }
-
-  .produto {
-    width: 220px;
-  }
-
-  .sobre {
-    padding: 8rem 3rem;
-    gap: 2rem;
-  }
-
-  .ilustracao img {
-    width: 500px;
-    height: 400px;
+    justify-items: center;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .texto {
     max-width: 400px;
+    margin-bottom: 0px;
   }
 
   .sobre .texto .subtitulo,
   .linha-onda {
     position: static;
     transform: none;
-    margin: 1rem 0;
+    margin: 1rem auto;
+  }
+
+  .professor {
+    position: static;
+    flex-direction: column;
     text-align: center;
   }
 
-  .texto h2 {
-    font-size: 1.8rem;
-  }
-
-  .texto p {
-    font-size: 1.1rem;
-    line-height: 1.5rem;
-  }
-
   .professor .foto img {
-    height: 250px;
-  }
-
-  .professor .info h3 {
-    font-size: 1.3rem;
+    margin: 1rem 1rem 0 1rem;
+    width: 160px;
+    height: 160px;
   }
 }
 
-/* Telas médias/pequenas (até 768px) */
 @media (max-width: 768px) {
   .background {
     height: 60vh;
@@ -367,114 +368,54 @@ main {
     padding: 4rem 1rem;
   }
 
-  .aulas h2 {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-  }
-
   .cards-aulas {
-    padding: 0 1rem;
     grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .card-aula {
-    width: 100%;
-    max-width: 300px;
-  }
-
-  .card-aula img {
-    height: 200px;
-  }
-
-  .btn-agendamentos {
-    padding: 0.8rem 2rem;
-    font-size: 0.9rem;
   }
 
   .destaques {
-    padding: 4rem 1rem;
+    padding: 5rem 2rem;
   }
 
-  .destaques h2 {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-  }
-
-  .produto-container {
-    gap: 1rem;
-  }
-
-  .produto {
-    width: 100%;
-    max-width: 280px;
-  }
-
-  .produto img {
-    height: 300px;
-  }
-
-  .btn-ver-mais {
-    padding: 0.8rem 2rem;
-    font-size: 0.9rem;
-  }
-
-  /* SOBRE */
   .sobre {
-    padding: 4rem 1rem;
     flex-direction: column;
     text-align: center;
-    gap: 1rem;
-    align-items: center;
+    gap: 1.5rem;
+    padding: 5rem 3rem 0 3rem;
   }
 
-  .ilustracao img {
-    width: 100%;
-    max-width: 350px;
-    height: auto;
-    margin-bottom: 2rem;
+  .subtitulo {
+    font-size: 1.2rem;
   }
 
-  .sobre .texto .subtitulo,
   .linha-onda {
-    position: static;
-    transform: none;
-    margin: 1rem 0;
-  }
-
-  .texto {
-    max-width: 100%;
-    text-align: center;
+    width: 90px;
   }
 
   .texto h2 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
   }
 
   .texto p {
     font-size: 1rem;
-    line-height: 1.4rem;
+  }
+
+  .ilustracao img {
+    max-width: 100%;
   }
 
   .professor {
     position: static;
-    margin-top: 2rem;
     flex-direction: column;
     text-align: center;
-    gap: 0.5rem;
   }
 
   .professor .foto img {
-    height: 150px;
-  }
-
-  .professor .info h3 {
-    font-size: 1.2rem;
+    width: 160px;
+    height: 160px;
   }
 }
 
-/* Telas muito pequenas (até 480px) */
-@media (max-width: 480px) {
+@media (max-width: 550px) {
   .aulas h2,
   .destaques h2 {
     font-size: 1.3rem;
@@ -491,25 +432,24 @@ main {
   .texto p {
     font-size: 0.9rem;
   }
-
-  .professor .foto img {
-    height: 120px;
+  .destaques {
+    padding: 5rem 1rem;
   }
-
-  .professor .info h3 {
-    font-size: 1.1rem;
-  }
-
-  .sobre {
-    padding: 3rem 1rem;
-  }
-
-  .ilustracao img {
-    max-width: 300px;
-    margin-bottom: 1.5rem;
-  }
-
   .linha-onda {
     max-width: 60px;
+  }
+
+  .ilustracao,
+  .ilustracao img {
+    width: 400px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 450px) {
+  .ilustracao,
+  .ilustracao img {
+    width: 300px;
+    height: 200px;
   }
 }

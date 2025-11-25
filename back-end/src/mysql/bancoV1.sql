@@ -1,5 +1,4 @@
 /* Schema v1*/
-
 CREATE DATABASE swell;
 USE swell;
 
