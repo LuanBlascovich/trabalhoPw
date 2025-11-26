@@ -3,7 +3,6 @@
   box-sizing: border-box;
 }
 
-/* Header Container */
 .header {
   width: 100%;
   height: 120px;
@@ -14,15 +13,14 @@
   position: relative;
   font-family: "Kumbh Sans", sans-serif;
   background-color: #93b0ce;
-    z-index: 9999; 
-  }
+  z-index: 9999;
+}
 
 .header.header-home {
   background-color: transparent;
   color: #000;
 }
 
-/* Hamburguer */
 .hamburger {
   display: none;
   font-size: 36px;
@@ -31,7 +29,6 @@
   z-index: 3;
 }
 
-/* Menu */
 .menu {
   display: flex;
   gap: 40px;
@@ -51,7 +48,6 @@
   font-weight: 800;
 }
 
-/* Logo */
 .logo {
   position: absolute;
   left: 50%;
@@ -86,7 +82,6 @@
   font-size: 35px;
 }
 
-/* Menu do usuário */
 .menu-usuario {
   display: none;
   position: absolute;
@@ -154,6 +149,7 @@
 
 
 /* -------------------- Responsivo -------------------- */
+
 @media (max-width: 1024px) {
   .header {
     padding: 0 30px;
@@ -169,22 +165,18 @@
   }
 }
 
-/* Mobile (telas pequenas) */
 @media (max-width: 768px) {
   .header {
     height: 120px;
     padding: 0 15px;
   }
-
   .hamburger {
     display: block;
   }
-
   .hamburger:hover {
     font-size: 38px;
     display: block;
   }
-
   .menu {
     position: absolute;
     top: 100%;
@@ -196,42 +188,33 @@
     display: none;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
-
   .menu.active {
     display: flex;
     animation: slideDown 0.3s ease;
   }
-
   .menu-item {
     padding: 15px 0;
     width: 100%;
     text-align: center;
   }
-
   .menu-item a {
     font-size: 16px;
   }
-
-  /* Logo menor */
   .logo img {
     max-width: 120px;
   }
-
-  /* Ícones direita */
   .menu-icon .material-icons {
     font-size: 25px;
   }
-
   .menu-usuario {
     top: 80px;
     right: 20px;
   }
   .menu-icon:hover .material-icons:hover {
-  font-size: 27px;
-}
+    font-size: 27px;
+  }
 }
 
-/* Animação */
 @keyframes slideDown {
   from {
     opacity: 0;

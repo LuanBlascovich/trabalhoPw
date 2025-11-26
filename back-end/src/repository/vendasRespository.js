@@ -1,7 +1,8 @@
 import { connection } from "./connection.js";
 
 export async function listarVendas() {
-    const comando = `SELECT id_venda, cliente_id, total, data_hora FROM venda`;
+    const comando = `SELECT id_venda, cliente_id, usuario.nome, total, data_hora 
+    FROM venda INNER JOIN usuario ON venda.cliente_id = usuario.id_usuario`;
     const [info] = await connection.query(comando);
     return info;
 }
@@ -21,4 +22,21 @@ export async function registrarVenda(cliente_id, produtos) {
         await connection.query(comando, [info.insertId, produto.id_produto, produto.preco, produto.quantidade]);
     }
     return info.insertId;
+}
+
+export async function pegarUltimaCompra(cliente_id) {
+    const comando = `
+        SELECT id_venda, cliente_id, total, data_hora
+        FROM venda
+        WHERE cliente_id = ?
+        ORDER BY data_hora DESC
+        LIMIT 1;
+    `;
+    const [info] = await connection.query(comando, [cliente_id]);
+
+    if (info.length > 0) {
+        return info[0];
+    } else {
+        return null;
+    }
 }

@@ -14,12 +14,14 @@ import { InicioComponent } from './pages/administrador/inicio/inicio.component';
 import { ListarClientesComponent } from './pages/administrador/listar-clientes/listar-clientes.component';
 import { ListarProdutosComponent } from './pages/administrador/listar-produtos/listar-produtos.component';
 import { CadastrarProdutoComponent } from './pages/administrador/cadastrar-produto/cadastrar-produto.component';
+import { ListarPedidosComponent } from './pages/administrador/listar-pedidos/listar-pedidos.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'admin', component: InicioComponent },
   { path: 'admin/clientes', component: ListarClientesComponent },
   { path: 'admin/produtos', component: ListarProdutosComponent },
+  { path: 'admin/pedidos', component: ListarPedidosComponent },
   { path: 'admin/cadastrar-produto', component: CadastrarProdutoComponent },
   { path: 'admin/cadastrar-produto/:id', component: CadastrarProdutoComponent },
   { path: 'agendamento', component: AgendamentoComponent },
