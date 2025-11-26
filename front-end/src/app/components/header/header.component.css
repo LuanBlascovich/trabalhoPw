@@ -129,6 +129,7 @@
   margin: 5px 0;
 }
 
+
 .menu-icon,.historico-icon {
   display: flex;
   align-items: center;
@@ -149,6 +150,7 @@
 
 
 /* -------------------- Responsivo -------------------- */
+
 
 @media (max-width: 1024px) {
   .header {
