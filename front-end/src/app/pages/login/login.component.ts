@@ -29,12 +29,23 @@ export class LoginComponent {
 
     this.usuariosService.fazerLogin(usuario as Usuario).subscribe({
       next: (res) => {
+
         if (res.usuario) {
           localStorage.setItem('usuario', JSON.stringify(res.usuario));
           localStorage.setItem('token', res.token);
           window.dispatchEvent(new Event('usuarioAtualizado'));
           alert(`Bem-vindo, ${res.usuario.nome}!`);
-          this.router.navigate(['/home']);
+
+          const agendamentoTemp = localStorage.getItem('agendamentoTemp');
+
+          if (agendamentoTemp) {
+            this.router.navigate(['/agendamento'], {
+              state: { agendamento: JSON.parse(agendamentoTemp) }
+            });
+            localStorage.removeItem('agendamentoTemp'); 
+          } else {
+            this.router.navigate(['/home']);
+          }
         } else {
           alert('E-mail ou senha inválidos!');
         }

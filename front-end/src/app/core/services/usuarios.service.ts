@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Usuario } from '../types/types';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -21,5 +21,9 @@ export class UsuariosService {
 
   listar(): Observable<Usuario[]> {
     return this.http.get<Usuario[]>(this.API + '/listar');
+  }
+
+  listarInstrutores(): Observable<any> {
+    return this.http.get(this.API+'/instrutores');
   }
 }
