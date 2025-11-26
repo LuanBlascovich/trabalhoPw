@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { CarrinhoService } from '../../core/services/carrinho.service';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -19,7 +20,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private carrinhoService: CarrinhoService
+    private carrinhoService: CarrinhoService,
+    public authService: AuthService
   ) {}
 
   ngOnInit() {
@@ -31,22 +33,30 @@ export class HeaderComponent implements OnInit {
   }
 
   atualizarUsuario() {
-    const usuarioStr = localStorage.getItem('usuario');
-    if (usuarioStr) {
-      const usuario = JSON.parse(usuarioStr);
-      this.usuarioLogado = true;
-      this.nomeUsuario = usuario.nome;
-      this.tipoUsuario = usuario.tipo;
-    } else {
-      this.usuarioLogado = false;
-      this.nomeUsuario = '';
-      this.tipoUsuario = '';
-    }
+  const token = localStorage.getItem('token'); // 🔹 Verifica se há token
+
+  const usuarioStr = localStorage.getItem('usuario');
+
+  if (usuarioStr && token) {  // 🔹 Agora só deixa logado se existir token + usuário
+    const usuario = JSON.parse(usuarioStr);
+    this.usuarioLogado = true;
+    this.nomeUsuario = usuario.nome;
+    this.tipoUsuario = usuario.tipo;
+  } else {
+    this.usuarioLogado = false;
+    this.nomeUsuario = '';
+    this.tipoUsuario = '';
   }
+}
+
 
   toggleMenu() {
     this.menuOpen = !this.menuOpen;
   }
+  fecharMenu() {
+  this.menuOpen = false;
+}
+
 
   abrirCarrinho() {
     this.router.navigate(['/carrinho']);

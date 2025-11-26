@@ -4,7 +4,7 @@ import { AulasComponent } from './pages/aulas/aulas.component';
 import { AgendamentoComponent } from './pages/agendamento/agendamento.component';
 import { CadastroComponent } from './pages/cadastro/cadastro.component';
 import { CarrinhoComponent } from './pages/carrinho/carrinho.component';
-import { ConfirmacaoComponent } from './pages/confirmacao/confirmacao.component';
+import { HistoricoAgendamentosComponent } from './pages/historico-agendamentos/historico-agendamentos.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ProdutosComponent } from './pages/produtos/produtos.component';
@@ -26,7 +26,7 @@ export const routes: Routes = [
   { path: 'aulas', component: AulasComponent },
   { path: 'cadastro', component: CadastroComponent },
   { path: 'carrinho', component: CarrinhoComponent },
-  { path: 'confirmacao', component: ConfirmacaoComponent },
+  { path: 'historico-agendamentos', component: HistoricoAgendamentosComponent },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'produtos', component: ProdutosComponent },
