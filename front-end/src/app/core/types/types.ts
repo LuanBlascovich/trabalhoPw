@@ -31,3 +31,18 @@ export interface Pedido {
   total: number;
   pagamento: string;
 }
+
+export interface Agendamento {
+  id_agendamento: number;
+  aula_id: number;
+  instrutor_id: number;
+  cliente_id: number;
+  data_hora: string;
+  status_agendamento: string;
+}
+
+export interface Aula {
+  id_aula: number;      
+  descricao: string;    
+  nivel: string;       
+}
