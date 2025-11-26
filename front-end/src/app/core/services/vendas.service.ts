@@ -15,4 +15,9 @@ export class VendasService {
     const headers = new HttpHeaders({ 'x-access-token': token });
     return this.http.get<Pedido[]>(this.API, { headers });
   }
+
+  pegarUltimaVenda(token: string): Observable<Pedido> {
+    const headers = new HttpHeaders({ 'x-access-token': token });
+    return this.http.get<Pedido>(`${this.API}/confirmacao`, { headers });
+  }
 }

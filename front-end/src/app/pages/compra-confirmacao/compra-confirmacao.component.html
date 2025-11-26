@@ -1,29 +1,24 @@
-<!--
-<div class="order-confirmation">
-  <h1 class="order-title">Confirmação de Compra</h1>
+<div class="confirmacao-compra">
+  <h1 class="titulo-compra">Confirmação de Compra</h1>
 
-  <div class="order-box">
-    <div class="order-item">
-      <span class="order-label">Código do Pedido</span>
-      <span class="order-value">{{ pedido.codigo }}</span>
+  <p class="mensagem-agradecimento">Agradecemos por comprar na Swell Treinamentos!</p>
+
+  <div class="caixa-informacoes">
+    <div class="item-informacao">
+      <span class="rotulo-informacao">Código do Pedido</span>
+      <span class="valor-informacao">{{ pedido?.id_venda }}</span>
     </div>
 
-    <div class="order-item">
-      <span class="order-label">Data</span>
-      <span class="order-value">{{ pedido.data | date: 'dd/MM/yyyy' }}</span>
+    <div class="item-informacao">
+      <span class="rotulo-informacao">Data</span>
+      <span class="valor-informacao">{{ pedido?.data | date:'dd/MM/yyyy HH:mm' }}</span>
     </div>
 
-    <div class="order-item">
-      <span class="order-label">Total</span>
-      <span class="order-value">{{ pedido.total | currency: 'BRL' }}</span>
+    <div class="item-informacao">
+      <span class="rotulo-informacao">Total</span>
+      <span class="valor-informacao">{{ pedido?.total | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</span>
     </div>
 
-    <div class="order-item">
-      <span class="order-label">Forma de Pagamento</span>
-      <span class="order-value">{{ pedido.pagamento }}</span>
-    </div>
-
-    <button routerLink="/home" class="back-button">Voltar à Loja</button>
+    <button routerLink="/home" class="botao-voltar">Voltar à Página Inicial</button>
   </div>
 </div>
--->

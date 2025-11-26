@@ -23,3 +23,20 @@ export async function registrarVenda(cliente_id, produtos) {
     }
     return info.insertId;
 }
+
+export async function pegarUltimaCompra(cliente_id) {
+    const comando = `
+        SELECT id_venda, cliente_id, total, data_hora
+        FROM venda
+        WHERE cliente_id = ?
+        ORDER BY data_hora DESC
+        LIMIT 1;
+    `;
+    const [info] = await connection.query(comando, [cliente_id]);
+
+    if (info.length > 0) {
+        return info[0];
+    } else {
+        return null;
+    }
+}
