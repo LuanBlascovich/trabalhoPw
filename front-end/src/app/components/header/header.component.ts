@@ -49,6 +49,11 @@ export class HeaderComponent implements OnInit {
   }
 
   abrirCarrinho() {
+    if (!this.usuarioLogado) {
+      alert('Você precisa estar logado para realizar essa ação!');
+      this.router.navigate(['/login']);
+      return;
+    }
     this.router.navigate(['/carrinho']);
   }
 
