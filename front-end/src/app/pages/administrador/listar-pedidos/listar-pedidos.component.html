@@ -11,25 +11,25 @@
     </nav>
 
     <main class="main-content">
-        <h2>Lista de Clientes</h2>
+        <h2>Lista de Pedidos</h2>
 
         <table class="user-table">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Sobrenome</th>
-                    <th>Email</th>
-                    <th>Data de Criação</th>
+                    <th>ID Venda</th>
+                    <th>ID Cliente</th>
+                    <th>Cliente</th>
+                    <th>Total</th>
+                    <th>Data do Pedido</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let cliente of clientes">
-                    <td>{{ cliente.id_usuario || '-' }}</td>
-                    <td>{{ cliente.nome }}</td>
-                    <td>{{ cliente.sobrenome || '-' }}</td>
-                    <td>{{ cliente.email }}</td>
-                    <td>{{ cliente.data_criacao | date:'dd/MM/yyyy HH:mm' }}</td>
+                <tr *ngFor="let pedido of vendas">
+                    <td>{{ pedido.id_venda }}</td>
+                    <td>{{ pedido.cliente_id }}</td>
+                    <td>{{ pedido.cliente_nome }}</td>
+                    <td>{{ pedido.total | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</td>
+                    <td>{{ pedido.data }}</td>
                 </tr>
             </tbody>
         </table>

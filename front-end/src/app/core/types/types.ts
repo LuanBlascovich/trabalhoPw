@@ -26,8 +26,9 @@ export interface ProdutoCarrinho {
 }
 
 export interface Pedido {
-  codigo: string;
-  data: Date;
+  id_venda: number;
+  cliente_id: number;
+  cliente_nome: string;
   total: number;
-  pagamento: string;
+  data: string;
 }

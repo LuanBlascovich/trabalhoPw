@@ -1,9 +1,7 @@
-<!-- AVISO: O header e o Footer já estão importados em todas as páginas. Não é necessário criar outro header ou footer nesta página. -->
 <header class="header" [class.header-home]="isHome">
-  <!-- Hamburguer (mobile) -->
+
   <span class="material-icons hamburger" (click)="toggleMenu()">menu</span>
 
-  <!-- Menu -->
   <nav class="menu" [class.active]="menuOpen">
     <div class="menu-item">
       <a routerLink="/home">HOME</a>
@@ -22,19 +20,16 @@
     </div>
   </nav>
 
-  <!-- Logo -->
   <div class="logo">
     <a routerLink="/home">
       <img src="/assets/images/logo.png" alt="Logo">
     </a>
   </div>
 
-  <!-- Ícones -->
   <div class="menu-icon">
     <span class="material-icons" (click)="abrirCarrinho()">shopping_bag</span>
     <span class="material-icons" (click)="abrirUsuario()">account_circle</span>
 
-    <!-- Menu do usuário -->
     <div id="menu-usuario" class="menu-usuario">
       <p *ngIf="usuarioLogado">Olá, {{ nomeUsuario }}!</p>
       <hr class="divisor" />

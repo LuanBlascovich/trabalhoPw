@@ -2,72 +2,57 @@
 
      <h1 class="titulo-pagina">CARRINHO</h1>
 
-     <table class="tabela-carrinho" *ngIf="(carrinho || []).length > 0">
-          <thead>
-               <tr>
-                    <th>Produto</th>
-                    <th>Quantidade</th>
-                    <th>Preço</th>
-                    <th>Subtotal</th>
-                    <th></th>
-               </tr>
-          </thead>
+     <div class="carrinho-conteudo">
 
-          <tbody>
-               <tr *ngFor="let item of carrinho || []">
-                    <td>
-                         <div class="produto-info">
-                              <img [src]="'http://localhost:5010/' + item.imagem" class="imagem-produto" alt="{{ item.nome }}">
-                              <div class="detalhes-produto">
-                                   <div class="nome-produto">{{ item.nome }}</div>
+          <table class="tabela-carrinho" *ngIf="(carrinho || []).length > 0">
+               <thead>
+                    <tr>
+                         <th>Produto</th>
+                         <th>Quantidade</th>
+                         <th>Preço</th>
+                         <th>Subtotal</th>
+                         <th></th>
+                    </tr>
+               </thead>
+               <tbody>
+                    <tr *ngFor="let item of carrinho || []">
+                         <td>
+                              <div class="produto-info">
+                                   <img [src]="'http://localhost:5010/' + item.imagem" class="imagem-produto"
+                                        alt="{{ item.nome }}">
+                                   <div class="detalhes-produto">
+                                        <div class="nome-produto">{{ item.nome }}</div>
+                                   </div>
                               </div>
-                         </div>
-                    </td>
+                         </td>
+                         <td>
+                              <div class="controle-quantidade">
+                                   <button (click)="diminuir(item)">-</button>
+                                   <span class="quantidade">{{ item.quantidade }}</span>
+                                   <button (click)="aumentar(item)">+</button>
+                              </div>
+                         </td>
+                         <td>{{ item.preco | currency:'BRL':'symbol' }}</td>
+                         <td>{{ (item.preco * item.quantidade) | currency:'BRL':'symbol' }}</td>
+                         <td>
+                              <button class="botao-remover" (click)="remover(item)">×</button>
+                         </td>
+                    </tr>
+               </tbody>
+          </table>
 
-                    <td>
-                         <div class="controle-quantidade">
-                              <button (click)="diminuir(item)">
-                                   <span class="material-icons">remove</span>
-                              </button>
+          <div class="total-container" *ngIf="(carrinho || []).length > 0">
+               <div class="total-linha">
+                    <span>Total:</span>
+                    <span>{{ total | currency:'BRL':'symbol' }}</span>
+               </div>
+               <button class="btn-comprar" (click)="finalizarCompra()">REALIZAR COMPRA</button>
+          </div>
 
-                              <span class="quantidade">{{ item.quantidade }}</span>
-
-                              <button (click)="aumentar(item)">
-                                   <span class="material-icons">add</span>
-                              </button>
-                         </div>
-                    </td>
-
-                    <td>
-                         {{ item.preco | currency:'BRL':'symbol' }}
-                    </td>
-
-                    <td>
-                         {{ (item.preco * item.quantidade) | currency:'BRL':'symbol' }}
-                    </td>
-
-                    <td>
-                         <button class="botao-remover" (click)="remover(item)">
-                              <span class="material-icons">close</span>
-                         </button>
-                    </td>
-               </tr>
-          </tbody>
-     </table>
+     </div>
 
      <div *ngIf="carrinho?.length === 0" class="carrinho-vazio">
           Seu carrinho está vazio.
-     </div>
-
-     <div class="total-container" *ngIf="(carrinho || []).length > 0">
-          <div class="total-linha">
-               <span>Total:</span>
-               <span>{{ total | currency:'BRL':'symbol' }}</span>
-          </div>
-
-          <button class="btn-comprar" (click)="finalizarCompra()">
-               REALIZAR COMPRA
-          </button>
      </div>
 
 </div>

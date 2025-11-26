@@ -1,7 +1,8 @@
 import { connection } from "./connection.js";
 
 export async function listarVendas() {
-    const comando = `SELECT id_venda, cliente_id, total, data_hora FROM venda`;
+    const comando = `SELECT id_venda, cliente_id, usuario.nome, total, data_hora 
+    FROM venda INNER JOIN usuario ON venda.cliente_id = usuario.id_usuario`;
     const [info] = await connection.query(comando);
     return info;
 }
