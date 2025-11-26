@@ -1,0 +1,49 @@
+.historico-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 2rem;
+}
+.titulo-pagina {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1f2937;
+  text-align: center;
+  margin-bottom: 40px;
+}
+.agendamento-card {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+}
+
+.comprovante {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-top: 1px dashed #888;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+.agendamentos-vazio {
+  padding: 40px;
+  background: #fff;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 16px;
+  color: #6b7280;
+  border: 1px dashed #9ca3af;
+}
+.historico-icon {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.historico-icon .material-symbols-outlined {
+  font-size: 32px;
+  color: #333;
+}
+
+.historico-icon:hover .material-symbols-outlined {
+  color: #555;
+}
