@@ -10,7 +10,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { ProdutosComponent } from './pages/produtos/produtos.component';
 import { CompraConfirmacaoComponent } from './pages/compra-confirmacao/compra-confirmacao.component';
 
-/*import { AgendamentosComponent } from './pages/administrador/agendamentos/agendamentos.component';*/
+import { AgendamentosComponent } from './pages/administrador/agendamentos/agendamentos.component';
 import { InicioComponent } from './pages/administrador/inicio/inicio.component';
 import { ListarClientesComponent } from './pages/administrador/listar-clientes/listar-clientes.component';
 import { ListarProdutosComponent } from './pages/administrador/listar-produtos/listar-produtos.component';
@@ -19,7 +19,7 @@ import { ListarPedidosComponent } from './pages/administrador/listar-pedidos/lis
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
- /* { path: 'admin/agendamentos', component: AgendamentosComponent },*/
+  { path: 'admin/agendamentos', component: AgendamentosComponent },
   { path: 'admin', component: InicioComponent },
   { path: 'admin/clientes', component: ListarClientesComponent },
   { path: 'admin/produtos', component: ListarProdutosComponent },

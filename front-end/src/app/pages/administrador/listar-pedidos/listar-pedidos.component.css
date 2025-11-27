@@ -1,7 +1,6 @@
 .admin-container {
   display: flex;
   min-height: 100vh;
-  font-family: Arial, sans-serif;
 }
 
 .sidebar {
@@ -39,6 +38,15 @@
   padding: 40px;
   background-color: #ecf0f1;
   color: #2c3e50;
+}
+
+.titulo-pagina {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1f2937;
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 50px;
 }
 
 .user-table {

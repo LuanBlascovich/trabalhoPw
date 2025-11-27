@@ -28,7 +28,7 @@
 
   <div class="menu-icon">
 
-    <a *ngIf="usuarioLogado" routerLink="/historico-agendamentos" class="historico-icon">
+    <a *ngIf="usuarioLogado && tipoUsuario !== 'administrador'" routerLink="/historico-agendamentos" class="historico-icon">
       <span class="material-icons">calendar_month</span>
     </a>
 
