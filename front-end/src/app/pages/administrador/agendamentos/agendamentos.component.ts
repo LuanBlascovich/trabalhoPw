@@ -8,9 +8,9 @@ import { AgendamentoService } from '../../../core/services/agendamento.service';
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './agendamentos.component.html',
-  styleUrl: './agendamentos.component.css',
+  styleUrl: './agendamentos.component.css'
 })
-export class HistoricoAgendamentoComponent implements OnInit {
+export class AgendamentosComponent implements OnInit {
   agendamentos: any[] = [];
   agendamentoSelecionado: any = null;
   token: string | null = '';

@@ -1,6 +1,18 @@
+<div class="admin-container">
 
+    <nav class="sidebar">
+        <h3>Navegação</h3>
+        <ul>
+            <li><a routerLink="/admin/agendamentos">Agendamentos</a></li>
+            <li><a routerLink="/admin/clientes">Clientes</a></li>
+            <li><a routerLink="/admin/pedidos">Pedidos</a></li>
+            <li><a routerLink="/admin/produtos">Produtos</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
 <div class="historico-container">
-  <h1 class="titulo-pagina">HISTÓRICO DE AGENDAMENTO</h1>
+  <h1 class="titulo-pagina">Agendamentos</h1>
 
   <div *ngIf="agendamentos.length > 0; else semAgendamentos">
     <div class="agendamento-card" *ngFor="let ag of agendamentos">
@@ -36,3 +48,4 @@
     </div>
   </ng-template>
 </div>
+</main>
