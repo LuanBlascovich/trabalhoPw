@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Agendamento } from '../types/types';
 
 @Injectable({
@@ -21,7 +21,7 @@ export class AgendamentoService {
 
     return {
       headers: new HttpHeaders({
-        Authorization: `Bearer ${token}`,
+        'x-access-token': token,
       }),
     };
   }
@@ -44,6 +44,36 @@ export class AgendamentoService {
   listarAgendamentos(): Observable<Agendamento[]> {
     const headers = this.getAuthHeaders();
     return this.http.get<Agendamento[]>(`${this.API}/listar`, headers!);
+  }
+
+  pegarUltimoAgendamento(): Observable<Agendamento> {
+    const headers = this.getAuthHeaders();
+    return this.http.get<Agendamento>(`${this.API}/ultimo`, headers!);
+  }
+
+  calcularPreco(nivel: string | undefined | null): number {
+    if (!nivel) return 0; 
+    switch (nivel.toLowerCase()) {
+      case 'iniciante':
+        return 160;
+      case 'intermediario':
+        return 180;
+      case 'avancado':
+        return 200;
+      default:
+        return 0;
+    }
+  }
+
+  confirmarAgendamento(
+    idAgendamento: number
+  ): Observable<{ mensagem: string }> {
+    const headers = this.getAuthHeaders();
+    return this.http.put<{ mensagem: string }>(
+      `${this.API}/confirmar/${idAgendamento}`,
+      {},
+      headers!
+    );
   }
 
   cancelarAgendamento(idAgendamento: number): Observable<{ mensagem: string }> {

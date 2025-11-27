@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router'; // 🔹 Import Router
-import jwtDecode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',

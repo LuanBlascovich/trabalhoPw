@@ -9,7 +9,7 @@ import { AgendamentoService } from '../../core/services/agendamento.service';
 import { UsuariosService } from '../../core/services/usuarios.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router'; // Adicione isso se não tiver
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-agendamento',
@@ -41,21 +41,18 @@ export class AgendamentoComponent implements OnInit {
 
     this.carregarInstrutores();
 
-    // 🔹 Prioriza dados do state (passados pelo login)
-    const state = history.state; // Ou this.route.snapshot.data, mas history.state é mais direto para state
+    const state = history.state; 
     if (state && state.agendamento) {
       this.agendamentoForm.patchValue(state.agendamento);
       alert(
         'Dados do agendamento recuperados após login! Você pode finalizar agora.'
       );
-      return; // 🔹 Sai aqui para não sobrescrever com localStorage
+      return; 
     }
-    // 🔹 Fallback: Recupera do localStorage (se acessado diretamente sem login)
     const agendamentoSalvo = localStorage.getItem('agendamentoTemp');
     if (agendamentoSalvo) {
       this.agendamentoForm.patchValue(JSON.parse(agendamentoSalvo));
       alert('Dados do agendamento recuperados! Faça login para finalizar.');
-      // Não remove aqui, pois pode ser usado se o usuário sair e voltar
     }
   }
 
@@ -70,8 +67,8 @@ export class AgendamentoComponent implements OnInit {
     if (this.agendamentoForm.invalid) return;
 
     const usuario = JSON.parse(localStorage.getItem('usuario') || 'null');
-    console.log('Usuário do localStorage:', usuario); // 🔹 Log para ver o objeto completo
-    console.log('ID do usuário:', usuario?.id_usuario); // 🔹 Log específico para id_usuario
+    console.log('Usuário do localStorage:', usuario); 
+    console.log('ID do usuário:', usuario?.id_usuario); 
 
     const dados = {
       nome_completo: this.agendamentoForm.value.nome_completo,
@@ -81,12 +78,10 @@ export class AgendamentoComponent implements OnInit {
       cliente_id: usuario ? usuario.id_usuario : null,
     };
 
-    console.log('Dados a serem enviados:', dados); // Já tem isso
+    console.log('Dados a serem enviados:', dados); 
 
     if (!usuario || !usuario.id_usuario) {
-      // 🔹 Mude para verificar id_usuario
-      // 🔹 Salva temporariamente e redireciona para login
-      const dadosTemp = {
+            const dadosTemp = {
         nome_completo: this.agendamentoForm.value.nome_completo,
         nivel: this.agendamentoForm.value.nivel,
         instrutor_id: this.agendamentoForm.value.instrutor_id,
@@ -98,11 +93,10 @@ export class AgendamentoComponent implements OnInit {
       return;
     }
 
-    // 🔹 Só chega aqui se logado e com id_usuario válido
     this.agendamentoService.criarAgendamento(dados).subscribe({
       next: (res) => {
         alert(res.mensagem);
-        this.router.navigate(['/confirmacao']);
+        this.router.navigate(['/historico-agendamentos']);
       },
       error: (err) => {
         console.error('Erro ao criar agendamento:', err);

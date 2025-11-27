@@ -33,11 +33,11 @@ export class HeaderComponent implements OnInit {
   }
 
   atualizarUsuario() {
-  const token = localStorage.getItem('token'); // 🔹 Verifica se há token
+  const token = localStorage.getItem('token');
 
   const usuarioStr = localStorage.getItem('usuario');
 
-  if (usuarioStr && token) {  // 🔹 Agora só deixa logado se existir token + usuário
+  if (usuarioStr && token) { 
     const usuario = JSON.parse(usuarioStr);
     this.usuarioLogado = true;
     this.nomeUsuario = usuario.nome;
@@ -48,7 +48,6 @@ export class HeaderComponent implements OnInit {
     this.tipoUsuario = '';
   }
 }
-
 
   toggleMenu() {
     this.menuOpen = !this.menuOpen;

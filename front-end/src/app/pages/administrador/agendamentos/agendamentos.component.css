@@ -95,7 +95,7 @@
   }
 
   .botoes-acoes {
-    flex-direction: row; /* Botões lado a lado no mobile */
+    flex-direction: row; 
     justify-content: space-between;
     margin-top: 10px;
     width: 100%;

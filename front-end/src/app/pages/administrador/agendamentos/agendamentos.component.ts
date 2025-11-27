@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { AgendamentoService } from '../../core/services/agendamento.service';
+import { AgendamentoService } from '../../../core/services/agendamento.service';
 
 @Component({
-  selector: 'app-historico-agendamento',
+  selector: 'app-agendamentos',
   standalone: true,
   imports: [CommonModule, RouterModule],
-  templateUrl: './historico-agendamentos.component.html',
-  styleUrl: './historico-agendamentos.component.css',
+  templateUrl: './agendamentos.component.html',
+  styleUrl: './agendamentos.component.css',
 })
 export class HistoricoAgendamentoComponent implements OnInit {
   agendamentos: any[] = [];
