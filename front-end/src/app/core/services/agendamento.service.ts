@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Agendamento } from '../types/types';
 
@@ -11,6 +11,21 @@ export class AgendamentoService {
 
   constructor(private http: HttpClient) {}
 
+  private getAuthHeaders() {
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+      console.error('Token não encontrado. Usuário precisa fazer login.');
+      return null;
+    }
+
+    return {
+      headers: new HttpHeaders({
+        'x-access-token': token,
+      }),
+    };
+  }
+
   criarAgendamento(dados: {
     nome_completo: string;
     nivel: string;
@@ -18,23 +33,63 @@ export class AgendamentoService {
     data_hora: string;
     cliente_id?: number;
   }): Observable<{ mensagem: string }> {
-    return this.http.post<{ mensagem: string }>(`${this.API}/criar`, dados);
+    const headers = this.getAuthHeaders();
+    return this.http.post<{ mensagem: string }>(
+      `${this.API}/criar`,
+      dados,
+      headers!
+    );
   }
 
   listarAgendamentos(): Observable<Agendamento[]> {
-    return this.http.get<Agendamento[]>(`${this.API}/listar`);
+    const headers = this.getAuthHeaders();
+    return this.http.get<Agendamento[]>(`${this.API}/listar`, headers!);
+  }
+
+  pegarUltimoAgendamento(): Observable<Agendamento> {
+    const headers = this.getAuthHeaders();
+    return this.http.get<Agendamento>(`${this.API}/ultimo`, headers!);
+  }
+
+  calcularPreco(nivel: string | undefined | null): number {
+    if (!nivel) return 0; 
+    switch (nivel.toLowerCase()) {
+      case 'iniciante':
+        return 160;
+      case 'intermediario':
+        return 180;
+      case 'avancado':
+        return 200;
+      default:
+        return 0;
+    }
+  }
+
+  confirmarAgendamento(
+    idAgendamento: number
+  ): Observable<{ mensagem: string }> {
+    const headers = this.getAuthHeaders();
+    return this.http.put<{ mensagem: string }>(
+      `${this.API}/confirmar/${idAgendamento}`,
+      {},
+      headers!
+    );
   }
 
   cancelarAgendamento(idAgendamento: number): Observable<{ mensagem: string }> {
+    const headers = this.getAuthHeaders();
     return this.http.put<{ mensagem: string }>(
       `${this.API}/cancelar/${idAgendamento}`,
-      {}
+      {},
+      headers!
     );
   }
 
   excluirAgendamento(idAgendamento: number): Observable<{ mensagem: string }> {
+    const headers = this.getAuthHeaders();
     return this.http.delete<{ mensagem: string }>(
-      `${this.API}/excluir/${idAgendamento}`
+      `${this.API}/excluir/${idAgendamento}`,
+      headers!
     );
   }
 }

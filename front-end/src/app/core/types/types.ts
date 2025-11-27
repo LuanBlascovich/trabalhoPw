@@ -40,10 +40,13 @@ export interface Agendamento {
   cliente_id: number;
   data_hora: string;
   status_agendamento: string;
+  nivel: string;
+  total: string;
+  metodoPagamento: string;
 }
 
 export interface Aula {
-  id_aula: number;      
-  descricao: string;    
-  nivel: string;       
+  id_aula: number;
+  descricao: string;
+  nivel: string;
 }

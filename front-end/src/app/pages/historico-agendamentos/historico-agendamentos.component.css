@@ -1,0 +1,108 @@
+
+* {
+  background: none;
+}
+
+.historico-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 2rem;
+}
+
+.titulo-pagina {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1f2937;
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 50px;
+}
+
+.agendamento-card {
+  background-color: #d4dbe3;
+  border: 1px solid #d4dbe3;
+  padding: 1rem;
+  margin: 1rem auto;
+  max-width: 600px;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;                /* Flex para alinhar conteúdo */
+  justify-content: space-between; /* Info à esquerda, botões à direita */
+  align-items: flex-start;
+  gap: 15px;                    /* Espaço entre info e botões */
+  flex-wrap: wrap;              /* Para não quebrar layout do comprovante */
+}
+
+.agendamento-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(147, 176, 206, 0.4);
+}
+
+/* Informações */
+.agendamento-card p {
+  margin: 4px 0;
+  flex: 1;
+}
+
+/* Botões */
+.botoes-acoes {
+  display: flex;
+  flex-direction: column; 
+  gap: 10px;
+  align-items: flex-end; 
+}
+
+.botoes-acoes button {
+  background-color: #93b0ce;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  width: 130px; /* largura fixa para alinhamento */
+}
+
+.botoes-acoes button:hover {
+  background-color: #7a9bb8;
+}
+
+.botoes-acoes button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Comprovante */
+.comprovante {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 1rem;
+  border-top: 1px dashed #93b0ce;
+  background-color: #e3e9f1;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #444;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+  .agendamento-card {
+    flex-direction: column; /* Empilha tudo */
+    align-items: stretch;
+  }
+
+  .botoes-acoes {
+    flex-direction: row; /* Botões lado a lado no mobile */
+    justify-content: space-between;
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  .botoes-acoes button {
+    flex: 1;
+    width: auto;
+  }
+}

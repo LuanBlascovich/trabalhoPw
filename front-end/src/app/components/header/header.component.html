@@ -4,19 +4,19 @@
 
   <nav class="menu" [class.active]="menuOpen">
     <div class="menu-item">
-      <a routerLink="/home">HOME</a>
+      <a routerLink="/home" (click)="fecharMenu()">HOME</a>
     </div>
     <div class="menu-item">
-      <a routerLink="/aulas">AULAS</a>
+      <a routerLink="/aulas" (click)="fecharMenu()">AULAS</a>
     </div>
     <div class="menu-item">
-      <a routerLink="/produtos">PRODUTOS</a>
+      <a routerLink="/produtos" (click)="fecharMenu()">PRODUTOS</a>
     </div>
     <div class="menu-item" *ngIf="tipoUsuario === 'administrador' && usuarioLogado">
-      <a routerLink="/admin">ADMINISTRADOR</a>
+      <a routerLink="/admin" (click)="fecharMenu()">ADMINISTRADOR</a>
     </div>
     <div class="menu-item">
-      <a (click)="scrollTo('sobre')">SOBRE</a>
+      <a (click)="scrollTo('sobre'); fecharMenu()">SOBRE</a>
     </div>
   </nav>
 
@@ -27,7 +27,13 @@
   </div>
 
   <div class="menu-icon">
+
+    <a *ngIf="usuarioLogado" routerLink="/historico-agendamentos" class="historico-icon">
+      <span class="material-icons">calendar_month</span>
+    </a>
+
     <span class="material-icons" (click)="abrirCarrinho()">shopping_bag</span>
+
     <span class="material-icons" (click)="abrirUsuario()">account_circle</span>
 
     <div id="menu-usuario" class="menu-usuario">
@@ -35,5 +41,7 @@
       <hr class="divisor" />
       <button (click)="sairDaConta()">Sair</button>
     </div>
+
   </div>
+
 </header>

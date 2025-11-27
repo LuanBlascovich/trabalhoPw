@@ -31,11 +31,9 @@ endpoints.post("/agendamento/criar", async (req, res) => {
         return res.status(400).send({ erro: "Nível inválido" });
     }
 
-    // 🔹 Criar aula automaticamente
     const descricao = `Aula de ${nivel} agendada por ${nome_completo}`;
     const aula_id = await aulaRepo.criarAula({ descricao, nivel, preco, instrutor_id });
 
-    // 🔹 Criar agendamento
     const agendamento_id = await repo.criarAgendamento({
       aula_id,
       cliente_id,
@@ -55,7 +53,6 @@ endpoints.post("/agendamento/criar", async (req, res) => {
   }
 });
 
-// Listar agendamentos (cliente ou admin)
 endpoints.get("/agendamento/listar", autenticar, async (req, res) => {
   try {
     const usuario = req.user;

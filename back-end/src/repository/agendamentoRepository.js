@@ -1,7 +1,8 @@
 import { connection } from "./connection.js";
 
 export async function criarAgendamento(agendamento) {
-  const { aula_id, cliente_id, instrutor_id, nome_completo, data_hora } = agendamento;
+  const { aula_id, cliente_id, instrutor_id, nome_completo, data_hora } =
+    agendamento;
 
   const comando = `
     INSERT INTO agendamento (aula_id, cliente_id, instrutor_id, nome_completo, data_hora, status_agendamento)
@@ -13,18 +14,27 @@ export async function criarAgendamento(agendamento) {
     cliente_id,
     instrutor_id,
     nome_completo,
-    data_hora
+    data_hora,
   ]);
 
   return result.insertId;
 }
 
+
 export async function listarAgendamentosPorCliente(clienteId) {
   const comando = `
-    SELECT id_agendamento, aula_id, cliente_id, instrutor_id, nome_completo, data_hora, status_agendamento
+    SELECT agendamento.id_agendamento,
+           agendamento.aula_id,
+           agendamento.cliente_id,
+           agendamento.instrutor_id,
+           agendamento.nome_completo,
+           aula.nivel,
+           agendamento.data_hora,
+           agendamento.status_agendamento
     FROM agendamento
-    WHERE cliente_id = ?
-    ORDER BY data_hora DESC
+    JOIN aula ON agendamento.aula_id = aula.id_aula
+    WHERE agendamento.cliente_id = ?
+    ORDER BY agendamento.data_hora DESC
   `;
   const [linhas] = await connection.query(comando, [clienteId]);
   return linhas;
@@ -32,13 +42,22 @@ export async function listarAgendamentosPorCliente(clienteId) {
 
 export async function listarTodosAgendamentos() {
   const comando = `
-    SELECT id_agendamento, aula_id, cliente_id, instrutor_id, nome_completo, data_hora, status_agendamento
+    SELECT agendamento.id_agendamento,
+           agendamento.aula_id,
+           agendamento.cliente_id,
+           agendamento.instrutor_id,
+           agendamento.nome_completo,
+           aula.nivel,
+           agendamento.data_hora,
+           agendamento.status_agendamento
     FROM agendamento
-    ORDER BY data_hora DESC
+    JOIN aula ON agendamento.aula_id = aula.id_aula
+    ORDER BY agendamento.data_hora DESC
   `;
   const [linhas] = await connection.query(comando);
   return linhas;
 }
+
 
 export async function cancelarAgendamento(idAgendamento) {
   const comando = `

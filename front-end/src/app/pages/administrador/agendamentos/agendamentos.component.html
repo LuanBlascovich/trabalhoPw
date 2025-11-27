@@ -1,0 +1,38 @@
+
+<div class="historico-container">
+  <h1 class="titulo-pagina">HISTÓRICO DE AGENDAMENTO</h1>
+
+  <div *ngIf="agendamentos.length > 0; else semAgendamentos">
+    <div class="agendamento-card" *ngFor="let ag of agendamentos">
+      <p><strong>Data:</strong> {{ ag.data_hora | date:'dd/MM/yyyy HH:mm' }}</p>
+      <p><strong>Total:</strong> {{ ag.total | currency:'BRL' }}</p>
+      <p><strong>Status:</strong> {{ ag.status_agendamento }}</p>
+
+      <!-- Botões -->
+      <div class="botoes-acoes">
+        <button (click)="verComprovante(ag)">
+          {{ agendamentoSelecionado === ag ? 'Fechar ' : 'Detalhes' }}
+        </button>
+        <button (click)="cancelarAgendamento(ag)" [disabled]="ag.status_agendamento === 'Cancelado'">
+          Cancelar
+        </button>
+      </div>
+
+      <div *ngIf="agendamentoSelecionado === ag" class="comprovante">
+        <h2>Comprovante de Agendamento</h2>
+        <p><strong>Código:</strong> {{ ag.id_agendamento }}</p>
+        <p><strong>Cliente:</strong> {{ ag.nome_completo }}</p>
+        <p><strong>Nível:</strong> {{ ag.nivel }}</p>
+        <p><strong>Data:</strong> {{ ag.data_hora | date:'dd/MM/yyyy HH:mm' }}</p>
+        <p><strong>Total:</strong> {{ ag.total | currency:'BRL' }}</p>
+        <p><strong>Status:</strong> {{ ag.status_agendamento }}</p>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #semAgendamentos>
+    <div class="agendamentos-vazio">
+      <p>Você ainda não possui agendamentos.</p>
+    </div>
+  </ng-template>
+</div>

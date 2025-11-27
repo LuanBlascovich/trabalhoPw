@@ -129,6 +129,29 @@
   margin: 5px 0;
 }
 
+
+.menu-icon,.historico-icon {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  z-index: 2;
+  text-decoration: none;
+}
+
+.menu-icon .material-icons,.historico-icon .material-icons {
+  font-size: 32px;
+  color: #000;
+  cursor: pointer;
+}
+
+.menu-icon:hover .material-icons:hover,.historico-icon:hover .material-icons {
+  font-size: 35px;
+}
+
+
+/* -------------------- Responsivo -------------------- */
+
+
 @media (max-width: 1024px) {
   .header {
     padding: 0 30px;
