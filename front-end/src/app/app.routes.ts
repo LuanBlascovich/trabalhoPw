@@ -15,11 +15,14 @@ import { ListarClientesComponent } from './pages/administrador/listar-clientes/l
 import { ListarProdutosComponent } from './pages/administrador/listar-produtos/listar-produtos.component';
 import { CadastrarProdutoComponent } from './pages/administrador/cadastrar-produto/cadastrar-produto.component';
 import { ListarPedidosComponent } from './pages/administrador/listar-pedidos/listar-pedidos.component';
+import { ListarAgendamentosComponent } from './pages/administrador/listar-agendamentos/listar-agendamentos.component';
+
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'admin', component: InicioComponent },
   { path: 'admin/clientes', component: ListarClientesComponent },
+  { path: 'admin/agendamentos', component: ListarAgendamentosComponent },
   { path: 'admin/produtos', component: ListarProdutosComponent },
   { path: 'admin/pedidos', component: ListarPedidosComponent },
   { path: 'admin/cadastrar-produto', component: CadastrarProdutoComponent },

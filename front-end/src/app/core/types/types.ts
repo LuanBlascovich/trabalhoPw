@@ -38,6 +38,7 @@ export interface Agendamento {
   aula_id: number;
   instrutor_id: number;
   cliente_id: number;
+  nome_completo?: string;
   data_hora: string;
   status_agendamento: string;
 }

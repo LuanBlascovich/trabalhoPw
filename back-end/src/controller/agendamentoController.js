@@ -61,10 +61,11 @@ endpoints.get("/agendamento/listar", autenticar, async (req, res) => {
     const usuario = req.user;
     let resultado;
 
-    if (usuario.tipo === "cliente") {
-      resultado = await repo.listarAgendamentosPorCliente(usuario.id_usuario);
-    } else {
+    // Admin vê todos os agendamentos
+    if (usuario.tipo === "administrador") {
       resultado = await repo.listarTodosAgendamentos();
+    } else {
+      resultado = await repo.listarAgendamentosPorCliente(usuario.id_usuario);
     }
 
     return res.send(resultado);
@@ -73,6 +74,7 @@ endpoints.get("/agendamento/listar", autenticar, async (req, res) => {
     return res.status(500).send({ erro: "Erro interno do servidor" });
   }
 });
+
 
 // Cancelar agendamento
 endpoints.put("/agendamento/cancelar/:id", autenticar, async (req, res) => {

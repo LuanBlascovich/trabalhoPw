@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Agendamento } from '../types/types';
 
@@ -22,19 +22,39 @@ export class AgendamentoService {
   }
 
   listarAgendamentos(): Observable<Agendamento[]> {
-    return this.http.get<Agendamento[]>(`${this.API}/listar`);
+    const token = localStorage.getItem('token');
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+
+    return this.http.get<Agendamento[]>(`${this.API}/listar`, { headers });
   }
 
   cancelarAgendamento(idAgendamento: number): Observable<{ mensagem: string }> {
+    const token = localStorage.getItem('token');
+
     return this.http.put<{ mensagem: string }>(
       `${this.API}/cancelar/${idAgendamento}`,
-      {}
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
     );
   }
 
   excluirAgendamento(idAgendamento: number): Observable<{ mensagem: string }> {
+    const token = localStorage.getItem('token');
+
     return this.http.delete<{ mensagem: string }>(
-      `${this.API}/excluir/${idAgendamento}`
+      `${this.API}/excluir/${idAgendamento}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
     );
   }
 }

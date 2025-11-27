@@ -1,0 +1,47 @@
+<div class="admin-container">
+
+  <aside class="sidebar">
+    <h3>Navegação</h3>
+    <ul>
+      <li><a routerLink="/admin/agendamentos">Agendamentos</a></li>
+      <li><a routerLink="/admin/clientes">Clientes</a></li>
+      <li><a routerLink="/admin/pedidos">Pedidos</a></li>
+      <li><a routerLink="/admin/produtos">Produtos</a></li>
+    </ul>
+  </aside>
+
+  <main class="main-content">
+    <h2>Lista de Agendamentos</h2>
+
+    <table class="user-table" *ngIf="agendamentos.length > 0; else semDados">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Aula</th>
+          <th>Nível</th>
+          <th>Instrutor</th>
+          <th>Cliente</th>
+          <th>Data e Hora</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let a of agendamentos">
+          <td>{{ a.id_agendamento }}</td>
+          <td>{{ a.descricao_aula }}</td>
+          <td>{{ a.nivel_aula }}</td>
+          <td>{{ a.nome_instrutor }} {{ a.sobrenome_instrutor }}</td>
+          <td>{{ a.nome_cliente }} {{ a.sobrenome_cliente }}</td>
+          <td>{{ a.data_hora }}</td>
+          <td>{{ a.status_agendamento }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ng-template #semDados>
+      <p>Nenhum agendamento encontrado.</p>
+    </ng-template>
+
+  </main>
+</div>

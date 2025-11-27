@@ -32,13 +32,27 @@ export async function listarAgendamentosPorCliente(clienteId) {
 
 export async function listarTodosAgendamentos() {
   const comando = `
-    SELECT id_agendamento, aula_id, cliente_id, instrutor_id, nome_completo, data_hora, status_agendamento
-    FROM agendamento
-    ORDER BY data_hora DESC
+    SELECT 
+      a.id_agendamento,
+      a.data_hora,
+      a.status_agendamento,
+      au.nivel AS nivel_aula,
+      au.descricao AS descricao_aula,
+      cli.nome AS nome_cliente,
+      cli.sobrenome AS sobrenome_cliente,
+      ins.nome AS nome_instrutor,
+      ins.sobrenome AS sobrenome_instrutor
+    FROM agendamento a
+    LEFT JOIN aula au ON a.aula_id = au.id_aula
+    LEFT JOIN usuario cli ON a.cliente_id = cli.id_usuario
+    LEFT JOIN usuario ins ON a.instrutor_id = ins.id_usuario
+    ORDER BY a.data_hora DESC
   `;
+
   const [linhas] = await connection.query(comando);
   return linhas;
 }
+
 
 export async function cancelarAgendamento(idAgendamento) {
   const comando = `
@@ -57,4 +71,28 @@ export async function excluirAgendamento(idAgendamento) {
   `;
   const [info] = await connection.query(comando, [idAgendamento]);
   return info.affectedRows > 0;
+}
+
+export async function listarAgendamentosDoInstrutor(instrutorId) {
+  const comando = `
+    SELECT 
+      a.id_agendamento,
+      a.data_hora,
+      a.status_agendamento,
+      au.nivel AS nivel_aula,
+      au.descricao AS descricao_aula,
+      cli.nome AS nome_cliente,
+      cli.sobrenome AS sobrenome_cliente,
+      ins.nome AS nome_instrutor,
+      ins.sobrenome AS sobrenome_instrutor
+    FROM agendamento a
+    LEFT JOIN aula au ON a.aula_id = au.id_aula
+    LEFT JOIN usuario cli ON a.cliente_id = cli.id_usuario
+    LEFT JOIN usuario ins ON a.instrutor_id = ins.id_usuario
+    WHERE a.instrutor_id = ?
+    ORDER BY a.data_hora DESC
+  `;
+
+  const [linhas] = await connection.query(comando, [instrutorId]);
+  return linhas;
 }
